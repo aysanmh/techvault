@@ -1,6 +1,7 @@
 
 using Core.Entities;
-using Infrastructure.Data;
+using Core.Interfaces;
+using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,39 +9,51 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class DeviceGroupsController : ControllerBase
+public class DeviceGroupsController(IDeviceGroupRepository repository) : ControllerBase
 {
-    private readonly StoreContext context;
-
-    public DeviceGroupsController(StoreContext context)
-    {
-        this.context = context;
-    }
-
+    
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<DeviceGroup>>> GetDeviceGroup()
+    public async Task<ActionResult<IReadOnlyList<DeviceGroup>>> GetDeviceGroup()
     {
-        return await context.Groups.ToListAsync();
+        return Ok(await repository.GetDeviceGroupsAsync());
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<DeviceGroup>> GetDeviceGroupById(int id)
     {
-        var group = await context.Groups.FindAsync(id);
+        var group = await repository.GetDeviceGroupByIdAsync(id);
 
         if(group == null) return NotFound();
 
         return group;
     }
 
+
+
+    [HttpGet("{id:int}/devices")]
+        public async Task<ActionResult<IReadOnlyList<Device>>> GetDevicesByGroup(int id)
+        {
+            var group = await repository.GetDeviceGroupByIdAsync(id);
+            if (group == null) return NotFound();
+
+            
+            var devices = await repository.GetDevicesAsync(id);
+
+            return Ok(devices);
+        }
+
     [HttpPost]
     public async Task<ActionResult<DeviceGroup>> CreateDeviceGroup(DeviceGroup group)
     {
-        context.Groups.Add(group);
+        repository.AddDeviceGroup(group);
 
-        await context.SaveChangesAsync();
+        if(await repository.SaveChangesAsync())
+        {
+            return CreatedAtAction("GetDeviceGroupById",new{id = group.Id},group);
+        }
 
-        return group;
+        return BadRequest("Problem creating group");
+
     }
 
     [HttpPut("{id:int}")]
@@ -49,31 +62,38 @@ public class DeviceGroupsController : ControllerBase
         if(group.Id != id || !GroupExists(id))
             return BadRequest("Cannot update group");
 
+        repository.UpdateDeviceGroup(group);
 
-        context.Entry(group).State = EntityState.Modified;
+        if(await repository.SaveChangesAsync())
+        {
+            return NoContent();
+        }
 
-        await context.SaveChangesAsync();
+        return BadRequest("Problem updating the group");
 
-        return NoContent();
     }
+
 
 
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> DeleteGroup(int id)
     {
-        var group = await context.Groups.FindAsync(id);
+        var group = await repository.GetDeviceGroupByIdAsync(id);
 
         if(group == null) return NotFound();
 
-        context.Groups.Remove(group);
+        repository.DeleteDeviceGroup(group);
 
-        await context.SaveChangesAsync();
+         if(await repository.SaveChangesAsync())
+        {
+            return NoContent();
+        }
 
-        return NoContent();
+        return BadRequest("Problem deleting the group");
     }
     private bool GroupExists(int id)
     {
-        return context.Groups.Any(x => x.Id == id);
+        return repository.DeviceGroupExists(id);
     }
 
     
