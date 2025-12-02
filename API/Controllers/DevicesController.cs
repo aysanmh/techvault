@@ -2,6 +2,7 @@
 using API.DTOs;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specification;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class DevicesController(IDeviceRepository repository) : ControllerBase
+public class DevicesController(IGenericRepository<Device> repository) : ControllerBase
 {
 
     [HttpGet]
@@ -19,7 +20,10 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
          string? deviceGroup,
          string? sort)
     {
-        var devices = await repository.GetDevicesAsync(brand, deviceGroup,sort);
+
+        var spec = new DeviceSpecification(brand,deviceGroup,sort);
+
+        var devices = await repository.ListAsync(spec);
 
         var dto = devices.Select(d => new DeviceDto
         {
@@ -39,7 +43,7 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<DeviceDto>> GetDeviceById(int id)
     {
-        var device = await repository.GetDeviceByIdAsync(id);
+        var device = await repository.GetByIdAsync(id);
 
         if (device == null) return NotFound();
 
@@ -58,20 +62,21 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
     [HttpGet("brands")]
     public async Task<ActionResult<IReadOnlyList<Brand>>> GetBrands()
     {
-        return Ok(await repository.GetBrandsAsync());
+        var spec = new BrandListSpecification();
+
+        return Ok(await repository.ListAsync(spec));
     }
 
 
     [HttpGet("groups")]
     public async Task<ActionResult<IReadOnlyList<DeviceGroup>>> GetGroups()
     {
-        return Ok(await repository.GetGroupsAsync());
+
+        var spec = new GroupListSpecification();
+
+        return Ok(await repository.ListAsync(spec));
     }
      
-
-    
-
-    
     [HttpPost]
     public async Task<ActionResult<DeviceDto>> CreateDevice(DeviceCreateDto dto)
     {
@@ -85,9 +90,9 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
             Price = dto.Price
         };
 
-        repository.AddDevice(device);
+        repository.Add(device);
 
-        if (await repository.SaveChangesAsync())
+        if (await repository.SaveAllAsync())
         {
             var deviceToReturn = new DeviceDto
             {
@@ -114,7 +119,7 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
     public async Task<ActionResult> UpdateDevice(int id, DeviceCreateDto dto)
     {   
         
-        var device = await repository.GetDeviceByIdAsync(id);
+        var device = await repository.GetByIdAsync(id);
 
         if (device == null) return NotFound();
 
@@ -132,9 +137,9 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
         device.Price = dto.Price;
 
 
-        repository.UpdateDevice(device);
+        repository.Update(device);
 
-        if (await repository.SaveChangesAsync())
+        if (await repository.SaveAllAsync())
             return NoContent();
 
         return BadRequest("Problem updating device");
@@ -144,17 +149,22 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
      [HttpDelete("{id:int}")]
      public async Task<ActionResult> DeleteDevice(int id)
     {
-        var device = await repository.GetDeviceByIdAsync(id);
+        var device = await repository.GetByIdAsync(id);
 
 
         if (device == null) return NotFound();
 
-        repository.DeleteDevice(device);
+        repository.Remove(device);
 
-        if (await repository.SaveChangesAsync())
+        if (await repository.SaveAllAsync())
             return NoContent();
 
         return BadRequest("Problem deleting device");
+    }
+
+    private bool DevcieExists(int id)
+    {
+        return repository.Exists(id);
     }
    
 

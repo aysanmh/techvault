@@ -9,19 +9,19 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class DeviceGroupsController(IDeviceGroupRepository repository) : ControllerBase
+public class DeviceGroupsController(IGenericRepository<DeviceGroup> repository) : ControllerBase
 {
     
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<DeviceGroup>>> GetDeviceGroup()
     {
-        return Ok(await repository.GetDeviceGroupsAsync());
+        return Ok(await repository.ListAllAsync());
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<DeviceGroup>> GetDeviceGroupById(int id)
     {
-        var group = await repository.GetDeviceGroupByIdAsync(id);
+        var group = await repository.GetByIdAsync(id);
 
         if(group == null) return NotFound();
 
@@ -34,9 +34,9 @@ public class DeviceGroupsController(IDeviceGroupRepository repository) : Control
     [HttpPost]
     public async Task<ActionResult<DeviceGroup>> CreateDeviceGroup(DeviceGroup group)
     {
-        repository.AddDeviceGroup(group);
+        repository.Add(group);
 
-        if(await repository.SaveChangesAsync())
+        if(await repository.SaveAllAsync())
         {
             return CreatedAtAction("GetDeviceGroupById",new{id = group.Id},group);
         }
@@ -51,9 +51,9 @@ public class DeviceGroupsController(IDeviceGroupRepository repository) : Control
         if(group.Id != id || !GroupExists(id))
             return BadRequest("Cannot update group");
 
-        repository.UpdateDeviceGroup(group);
+        repository.Update(group);
 
-        if(await repository.SaveChangesAsync())
+        if(await repository.SaveAllAsync())
         {
             return NoContent();
         }
@@ -67,13 +67,13 @@ public class DeviceGroupsController(IDeviceGroupRepository repository) : Control
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> DeleteGroup(int id)
     {
-        var group = await repository.GetDeviceGroupByIdAsync(id);
+        var group = await repository.GetByIdAsync(id);
 
         if(group == null) return NotFound();
 
-        repository.DeleteDeviceGroup(group);
+        repository.Remove(group);
 
-         if(await repository.SaveChangesAsync())
+         if(await repository.SaveAllAsync())
         {
             return NoContent();
         }
@@ -82,7 +82,7 @@ public class DeviceGroupsController(IDeviceGroupRepository repository) : Control
     }
     private bool GroupExists(int id)
     {
-        return repository.DeviceGroupExists(id);
+        return repository.Exists(id);
     }
 
     
