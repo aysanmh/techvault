@@ -18,21 +18,52 @@ namespace Infrastructure.Data
             context.Devices.Remove(device);
         }
 
+        public async Task<IReadOnlyList<Brand>> GetBrandsAsync()
+        {
+            return await context.Devices.Select(x => x.Brand)
+            .Distinct()
+            .ToListAsync();
+
+        }
+
+        public async Task<IReadOnlyList<DeviceGroup>> GetGroupsAsync()
+        {
+            return await context.Devices.Select(x => x.DeviceGroup)
+            .Distinct()
+            .ToListAsync();
+        }
 
         public async Task<Device?> GetDeviceByIdAsync(int id)
         {
                return await context.Devices
                 .Include(d => d.Brand)
-                .Include(d => d.Group)
+                .Include(d => d.DeviceGroup)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
 
-        public async Task<IReadOnlyList<Device>> GetDevicesAsync()
+        public async Task<IReadOnlyList<Device>> GetDevicesAsync(string? brand, string? deviceGroup
+        , string? sort)
         {
-             return await context.Devices
+            var query = context.Devices
                 .Include(d => d.Brand)
-                .Include(d => d.Group)
-                .ToListAsync();
+                .Include(d => d.DeviceGroup)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(brand))
+                query = query.Where(d => d.Brand.BrandName == brand);
+
+            if (!string.IsNullOrEmpty(deviceGroup))
+                query = query.Where(d => d.DeviceGroup.GroupName == deviceGroup);
+
+            query = sort switch
+            {
+                "priceAsc" => query.OrderBy(x => x.Price),
+                "priceDesc" => query.OrderByDescending(x => x.Price),
+                _ => query.OrderBy(x => x.Id)
+            };
+            
+
+            return await query.ToListAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

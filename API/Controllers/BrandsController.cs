@@ -75,17 +75,7 @@ namespace API.Controllers
             return BadRequest("Problem deleting the brand");
         }
 
-        [HttpGet("{id:int}/devices")]
-        public async Task<ActionResult<IReadOnlyList<Device>>> GetDevicesByBrand(int id)
-        {
-            var brand = await repository.GetBrandByIdAsync(id);
-            if (brand == null) return NotFound();
-
-            
-            var devices = await repository.GetDevicesByBrandAsync(id);
-
-            return Ok(devices);
-        }
+        
 
 
         private bool BrandExists(int id)

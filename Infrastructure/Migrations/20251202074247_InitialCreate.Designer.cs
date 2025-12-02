@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20251125112127_InitialCreate")]
+    [Migration("20251202074247_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -104,7 +104,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.DeviceGroup", "Group")
+                    b.HasOne("Core.Entities.DeviceGroup", "DeviceGroup")
                         .WithMany("Devices")
                         .HasForeignKey("DeviceGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -112,7 +112,7 @@ namespace Infrastructure.Migrations
 
                     b.Navigation("Brand");
 
-                    b.Navigation("Group");
+                    b.Navigation("DeviceGroup");
                 });
 
             modelBuilder.Entity("Core.Entities.Brand", b =>

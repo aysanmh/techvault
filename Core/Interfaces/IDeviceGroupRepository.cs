@@ -10,7 +10,7 @@ namespace Core.Interfaces
 
         Task<DeviceGroup?> GetDeviceGroupByIdAsync(int id);
 
-        Task<IReadOnlyList<Device>> GetDevicesAsync(int groupId);
+        
         void AddDeviceGroup(DeviceGroup deviceGroup);
 
         void UpdateDeviceGroup(DeviceGroup deviceGroup);

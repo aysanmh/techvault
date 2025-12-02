@@ -5,7 +5,7 @@ namespace Core.Entities
     {
 
         public int DeviceGroupId { get; set; }
-        public DeviceGroup?  Group { get; set; }
+        public DeviceGroup?  DeviceGroup { get; set; }
 
         public int BrandId { get; set; }
         public  Brand? Brand { get; set; }
@@ -20,7 +20,7 @@ namespace Core.Entities
         public decimal Price { get; set; }
 
         public string DisplayName =>
-        $"{Brand?.BrandName} {Model} ({Group?.GroupName})";
+        $"{Brand?.BrandName} {Model} ({DeviceGroup?.GroupName})";
 
 
         

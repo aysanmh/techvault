@@ -43,12 +43,6 @@ namespace Infrastructure.Data
             context.Entry(brand).State = EntityState.Modified;
         }
 
-        public async Task<IReadOnlyList<Device>> GetDevicesByBrandAsync(int brandId)
-        {
-            return await context.Devices
-            .Where(d => d.BrandId == brandId)
-            .ToListAsync();
-
-        }
+       
     }
 }

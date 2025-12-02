@@ -101,7 +101,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.DeviceGroup", "Group")
+                    b.HasOne("Core.Entities.DeviceGroup", "DeviceGroup")
                         .WithMany("Devices")
                         .HasForeignKey("DeviceGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -109,7 +109,7 @@ namespace Infrastructure.Migrations
 
                     b.Navigation("Brand");
 
-                    b.Navigation("Group");
+                    b.Navigation("DeviceGroup");
                 });
 
             modelBuilder.Entity("Core.Entities.Brand", b =>

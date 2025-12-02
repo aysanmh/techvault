@@ -30,17 +30,6 @@ public class DeviceGroupsController(IDeviceGroupRepository repository) : Control
 
 
 
-    [HttpGet("{id:int}/devices")]
-        public async Task<ActionResult<IReadOnlyList<Device>>> GetDevicesByGroup(int id)
-        {
-            var group = await repository.GetDeviceGroupByIdAsync(id);
-            if (group == null) return NotFound();
-
-            
-            var devices = await repository.GetDevicesAsync(id);
-
-            return Ok(devices);
-        }
 
     [HttpPost]
     public async Task<ActionResult<DeviceGroup>> CreateDeviceGroup(DeviceGroup group)

@@ -10,7 +10,7 @@ namespace Core.Interfaces
 
         Task<Brand?> GetBrandByIdAsync(int id);
 
-        Task<IReadOnlyList<Device>> GetDevicesByBrandAsync(int brandId);
+        
 
         void AddBrand(Brand brand);
 

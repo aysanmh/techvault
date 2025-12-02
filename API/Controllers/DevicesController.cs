@@ -14,9 +14,12 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
 {
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<DeviceDto>>> GetDevices()
+    public async Task<ActionResult<IReadOnlyList<DeviceDto>>> GetDevices(
+         string? brand,
+         string? deviceGroup,
+         string? sort)
     {
-        var devices = await repository.GetDevicesAsync();
+        var devices = await repository.GetDevicesAsync(brand, deviceGroup,sort);
 
         var dto = devices.Select(d => new DeviceDto
         {
@@ -26,13 +29,12 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
             Description = d.Description,
             Price = d.Price,
             BrandName = d.Brand?.BrandName,
-            DeviceGroupName = d.Group?.GroupName
-
+            DeviceGroupName = d.DeviceGroup?.GroupName
         }).ToList();
-            
+
         return Ok(dto);
-        
     }
+
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<DeviceDto>> GetDeviceById(int id)
@@ -49,9 +51,25 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
             Description = device.Description,
             Price = device.Price,
             BrandName = device.Brand?.BrandName,
-            DeviceGroupName = device.Group?.GroupName
+            DeviceGroupName = device.DeviceGroup?.GroupName
         };
     }
+
+    [HttpGet("brands")]
+    public async Task<ActionResult<IReadOnlyList<Brand>>> GetBrands()
+    {
+        return Ok(await repository.GetBrandsAsync());
+    }
+
+
+    [HttpGet("groups")]
+    public async Task<ActionResult<IReadOnlyList<DeviceGroup>>> GetGroups()
+    {
+        return Ok(await repository.GetGroupsAsync());
+    }
+     
+
+    
 
     
     [HttpPost]
@@ -79,7 +97,7 @@ public class DevicesController(IDeviceRepository repository) : ControllerBase
                 Description = device.Description,
                 Price = device.Price,
                 BrandName = device.Brand?.BrandName, 
-                DeviceGroupName = device.Group?.GroupName
+                DeviceGroupName = device.DeviceGroup?.GroupName
             };
 
             return CreatedAtAction(nameof(GetDeviceById),

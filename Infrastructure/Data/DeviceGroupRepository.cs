@@ -33,12 +33,7 @@ namespace Infrastructure.Data
             return await context.Groups.ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Device>> GetDevicesAsync(int groupId)
-        {
-            return await context.Devices
-            .Where(d => d.DeviceGroupId == groupId)
-            .ToListAsync();
-        }
+       
 
         public async Task<bool> SaveChangesAsync()
         {
