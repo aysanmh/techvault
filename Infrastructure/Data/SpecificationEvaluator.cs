@@ -32,6 +32,11 @@ namespace Infrastructure.Data
                 query = query.Distinct();
             }
 
+            if (spec.IsPagingEnabled)
+            {
+                 query = query.Skip(spec.Skip).Take(spec.Take);
+            }
+
             query = spec.Includes.Aggregate(query, (current, include) => 
             current.Include(include));
 
@@ -73,6 +78,10 @@ namespace Infrastructure.Data
             if (spec.IsDistinct)
             {
                 selectedQuery = selectedQuery?.Distinct();
+            }
+            if (spec.IsPagingEnabled)
+            {
+                 selectedQuery = selectedQuery?.Skip(spec.Skip).Take(spec.Take);
             }
 
             return selectedQuery ?? query.Cast<TResult>();

@@ -5,15 +5,18 @@ namespace Core.Specification
 {
     public class DeviceSpecification : BaseSpecification<Device>
     {
-        public DeviceSpecification(string? brand,string? deviceGroup, string? sort) : base(x =>
-        (string.IsNullOrWhiteSpace(brand) || x.Brand.BrandName == brand) &&
-        (string.IsNullOrWhiteSpace(deviceGroup) || x.DeviceGroup.GroupName== deviceGroup)
+        public DeviceSpecification(DeviceSpecParams specParams) : base(x =>
+        (string.IsNullOrEmpty(specParams.Search) || x.Model.ToLower().Contains(specParams.Search)) &&
+        (specParams.Brands.Count == 0 || specParams.Brands.Contains(x.Brand.BrandName)) &&
+        (specParams.DeviceGroups.Count == 0 || specParams.DeviceGroups.Contains(x.DeviceGroup.GroupName))
         )
         {
             AddInclude(x => x.Brand);
             AddInclude(x => x.DeviceGroup);
 
-            switch(sort)
+            ApplyPaging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
+            
+             switch(specParams.Sort)    
             {
                 case "priceAsc":
                     AddOrderBy(x => x.Price);

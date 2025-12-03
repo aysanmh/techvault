@@ -1,31 +1,25 @@
 
 using API.DTOs;
+using API.RequestHelpers;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
-using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class DevicesController(IGenericRepository<Device> repository) : ControllerBase
+public class DevicesController(IGenericRepository<Device> repository) : BaseApiController
 {
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<DeviceDto>>> GetDevices(
-         string? brand,
-         string? deviceGroup,
-         string? sort)
+    public async Task<ActionResult<Pagination<DeviceDto>>> GetDevices([FromQuery] DeviceSpecParams specParams)
     {
-
-        var spec = new DeviceSpecification(brand,deviceGroup,sort);
+        var spec = new DeviceSpecification(specParams);
 
         var devices = await repository.ListAsync(spec);
+        var count = await repository.CountAsync(spec);
 
-        var dto = devices.Select(d => new DeviceDto
+        var dtos = devices.Select(d => new DeviceDto
         {
             Id = d.Id,
             Model = d.Model,
@@ -36,8 +30,9 @@ public class DevicesController(IGenericRepository<Device> repository) : Controll
             DeviceGroupName = d.DeviceGroup?.GroupName
         }).ToList();
 
-        return Ok(dto);
+        return CreatePagedResult(dtos, specParams.PageIndex, specParams.PageSize, count);
     }
+
 
 
     [HttpGet("{id:int}")]
