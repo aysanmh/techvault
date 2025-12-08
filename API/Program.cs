@@ -8,9 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// builder.Services.AddControllers()
+//     .AddJsonOptions(options =>
+//         options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
-        options.JsonSerializerOptions.PropertyNamingPolicy = null);
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
 
 
 builder.Services.AddDbContext<StoreContext>(opt =>
@@ -25,6 +31,8 @@ builder.Services.AddScoped<IDeviceRepository,DeviceRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddCors();
+
+
 
 var app = builder.Build();
 

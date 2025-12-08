@@ -3,7 +3,7 @@
     "DeviceGroupId": 1,
     "BrandId": 1,
     "Model": "Lenovo ThinkPad X1 Carbon",
-    "ImageUrl": "https://example.com/lenovo-x1.jpg",
+    "ImageUrl": "/images/lenovo.png",
     "Description": "Lightweight and powerful business laptop.",
     "Price": 1200.00
   },
@@ -11,7 +11,7 @@
     "DeviceGroupId": 1,
     "BrandId": 2,
     "Model": "ASUS ROG Strix G15",
-    "ImageUrl": "https://example.com/asus-rog.jpg",
+    "ImageUrl": "/images/asus.png",
     "Description": "High-performance gaming laptop with a sleek design.",
     "Price": 1500.00
   },
@@ -19,7 +19,7 @@
     "DeviceGroupId": 1,
     "BrandId": 3,
     "Model": "MSI GE76 Raider",
-    "ImageUrl": "https://example.com/msi-ge76.jpg",
+    "ImageUrl": "/images/msi.png",
     "Description": "A top-tier gaming laptop with a powerful GPU and CPU.",
     "Price": 1800.00
   },
@@ -27,7 +27,7 @@
     "DeviceGroupId": 2,
     "BrandId": 10,
     "Model": "Logitech G Pro X Keyboard",
-    "ImageUrl": "https://example.com/logitech-keyboard.jpg",
+    "ImageUrl": "/images/logitech.png",
     "Description": "Mechanical keyboard designed for esports.",
     "Price": 120.00
   },
@@ -35,7 +35,7 @@
     "DeviceGroupId": 2,
     "BrandId": 8,
     "Model": "Razer BlackWidow V3",
-    "ImageUrl": "https://example.com/razer-keyboard.jpg",
+    "ImageUrl": "/images/razer.png",
     "Description": "RGB mechanical keyboard with green switches.",
     "Price": 150.00
   },
@@ -43,7 +43,7 @@
     "DeviceGroupId": 3,
     "BrandId": 10,
     "Model": "Logitech MX Master 3",
-    "ImageUrl": "https://example.com/logitech-mxmaster.jpg",
+    "ImageUrl": "/images/logitech-mx.png",
     "Description": "Wireless mouse with customizable buttons and ergonomic design.",
     "Price": 100.00
   },
@@ -51,7 +51,7 @@
     "DeviceGroupId": 3,
     "BrandId": 9,
     "Model": "Samsung Odyssey Mouse",
-    "ImageUrl": "https://example.com/samsung-mouse.jpg",
+    "ImageUrl": "/images/samsung.png",
     "Description": "Gaming mouse with precision sensor and RGB lighting.",
     "Price": 80.00
   },
@@ -59,7 +59,7 @@
     "DeviceGroupId": 4,
     "BrandId": 5,
     "Model": "Dell UltraSharp U2720Q",
-    "ImageUrl": "https://example.com/dell-monitor.jpg",
+    "ImageUrl": "/images/dell.png",
     "Description": "4K monitor with excellent color accuracy.",
     "Price": 400.00
   },
@@ -67,7 +67,7 @@
     "DeviceGroupId": 4,
     "BrandId": 6,
     "Model": "Apple Studio Display",
-    "ImageUrl": "https://example.com/apple-display.jpg",
+    "ImageUrl": "/images/apple.png",
     "Description": "Retina 5K monitor with superb image quality.",
     "Price": 1600.00
   },
@@ -75,7 +75,7 @@
     "DeviceGroupId": 5,
     "BrandId": 7,
     "Model": "Acer Predator Galea 500",
-    "ImageUrl": "https://example.com/acer-headset.jpg",
+    "ImageUrl": "/images/acer.png",
     "Description": "Gaming headset with surround sound and microphone.",
     "Price": 120.00
   }
