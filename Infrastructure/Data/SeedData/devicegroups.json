@@ -1,7 +1,7 @@
 [
-  {  "GroupName": "Laptop" },
-  {  "GroupName": "Keyboard" },
-  {  "GroupName": "Mouse" },
-  {  "GroupName": "Monitor" },
-  {  "GroupName": "Headset" }
+  { "GroupName": "Laptop" },
+  { "GroupName": "Keyboard" },
+  { "GroupName": "Mouse" },
+  { "GroupName": "Monitor" },
+  { "GroupName": "Headset" }
 ]

@@ -3,232 +3,208 @@
     "DeviceGroupId": 1,
     "BrandId": 1,
     "Model": "Lenovo ThinkPad X1 Carbon",
-    "ImageUrl": "/images/lenovo.png",
+    "ImageUrl": "/images/laptops/lenovo/1.png",
     "Description": "Lightweight and powerful business laptop.",
     "Price": 1200.00
   },
   {
     "DeviceGroupId": 1,
+    "BrandId": 1,
+    "Model": "Lenovo Legion 5",
+    "ImageUrl": "/images/laptops/lenovo/2.png",
+    "Description": "High-performance gaming laptop with AMD CPU.",
+    "Price": 1400.00
+  },
+  {
+    "DeviceGroupId": 1,
     "BrandId": 2,
     "Model": "ASUS ROG Strix G15",
-    "ImageUrl": "/images/asus.png",
-    "Description": "High-performance gaming laptop with a sleek design.",
+    "ImageUrl": "/images/laptops/asus/1.png",
+    "Description": "Gaming laptop with NVIDIA RTX GPU.",
     "Price": 1500.00
+  },
+  {
+    "DeviceGroupId": 1,
+    "BrandId": 2,
+    "Model": "ASUS TUF Dash F15",
+    "ImageUrl": "/images/laptops/asus/2.png",
+    "Description": "Durable gaming laptop with high refresh display.",
+    "Price": 1300.00
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 3,
     "Model": "MSI GE76 Raider",
-    "ImageUrl": "/images/msi.png",
-    "Description": "A top-tier gaming laptop with a powerful GPU and CPU.",
+    "ImageUrl": "/images/laptops/msi/1.png",
+    "Description": "Top-tier gaming laptop with a powerful GPU and CPU.",
     "Price": 1800.00
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 4,
     "Model": "HP Spectre x360",
-    "ImageUrl": "/images/hp.png",
+    "ImageUrl": "/images/laptops/hp/1.png",
     "Description": "Premium convertible laptop with 4K display.",
     "Price": 1400.00
   },
   {
     "DeviceGroupId": 1,
+    "BrandId": 4,
+    "Model": "HP Omen 16",
+    "ImageUrl": "/images/laptops/hp/2.png",
+    "Description": "Gaming laptop with fast refresh rate display.",
+    "Price": 1600.00
+  },
+  {
+    "DeviceGroupId": 1,
     "BrandId": 5,
     "Model": "Dell XPS 13",
-    "ImageUrl": "/images/dell.png",
+    "ImageUrl": "/images/laptops/dell/1.png",
     "Description": "Compact, ultra-portable laptop with excellent battery life.",
     "Price": 1200.00
   },
   {
     "DeviceGroupId": 1,
-    "BrandId": 6,
-    "Model": "Apple MacBook Pro 16\"",
-    "ImageUrl": "/images/apple.png",
-    "Description": "Powerful laptop with M1 Pro chip for professional use.",
-    "Price": 2400.00
+    "BrandId": 5,
+    "Model": "Dell G15",
+    "ImageUrl": "/images/laptops/dell/2.png",
+    "Description": "Affordable gaming laptop with NVIDIA GPU.",
+    "Price": 1300.00
   },
   {
     "DeviceGroupId": 1,
-    "BrandId": 7,
+    "BrandId": 6,
     "Model": "Acer Swift 3",
-    "ImageUrl": "/images/acer.png",
+    "ImageUrl": "/images/laptops/acer/1.png",
     "Description": "Affordable ultrabook with solid performance.",
     "Price": 800.00
   },
   {
     "DeviceGroupId": 1,
-    "BrandId": 8,
+    "BrandId": 6,
+    "Model": "Acer Predator Helios 300",
+    "ImageUrl": "/images/laptops/acer/2.png",
+    "Description": "Gaming laptop with high refresh display.",
+    "Price": 1500.00
+  },
+  {
+    "DeviceGroupId": 1,
+    "BrandId": 7,
     "Model": "Razer Blade 15",
-    "ImageUrl": "/images/razer.png",
-    "Description": "Slim and powerful gaming laptop with an OLED display.",
+    "ImageUrl": "/images/laptops/razer/1.png",
+    "Description": "Slim and powerful gaming laptop with OLED display.",
     "Price": 2000.00
   },
   {
     "DeviceGroupId": 2,
-    "BrandId": 10,
+    "BrandId": 9,
     "Model": "Logitech G Pro X Keyboard",
-    "ImageUrl": "/images/logitech.png",
+    "ImageUrl": "/images/keyboards/logitech/1.png",
     "Description": "Mechanical keyboard designed for esports.",
     "Price": 120.00
   },
   {
     "DeviceGroupId": 2,
-    "BrandId": 8,
+    "BrandId": 7,
     "Model": "Razer BlackWidow V3",
-    "ImageUrl": "/images/razer.png",
+    "ImageUrl": "/images/keyboards/razer/1.png",
     "Description": "RGB mechanical keyboard with green switches.",
     "Price": 150.00
   },
   {
     "DeviceGroupId": 2,
-    "BrandId": 6,
-    "Model": "Apple Magic Keyboard",
-    "ImageUrl": "/images/apple.png",
-    "Description": "Compact wireless keyboard with great key response.",
-    "Price": 99.00
-  },
-  {
-    "DeviceGroupId": 2,
-    "BrandId": 9,
-    "Model": "Samsung Galaxy Keyboard",
-    "ImageUrl": "/images/samsung.png",
-    "Description": "Wireless keyboard with a sleek design and good key travel.",
-    "Price": 100.00
-  },
-  {
-    "DeviceGroupId": 2,
-    "BrandId": 5,
-    "Model": "Dell KM117 Wireless Keyboard",
-    "ImageUrl": "/images/dell.png",
-    "Description": "Affordable wireless keyboard and mouse combo.",
-    "Price": 40.00
+    "BrandId": 10,
+    "Model": "Corsair K70 RGB",
+    "ImageUrl": "/images/keyboards/corsair/1.png",
+    "Description": "Durable mechanical keyboard with customizable RGB lighting.",
+    "Price": 160.00
   },
   {
     "DeviceGroupId": 3,
-    "BrandId": 10,
+    "BrandId": 9,
     "Model": "Logitech MX Master 3",
-    "ImageUrl": "/images/logitech-mx.png",
+    "ImageUrl": "/images/mouses/logitech/1.png",
     "Description": "Wireless mouse with customizable buttons and ergonomic design.",
     "Price": 100.00
   },
   {
     "DeviceGroupId": 3,
-    "BrandId": 9,
-    "Model": "Samsung Odyssey Mouse",
-    "ImageUrl": "/images/samsung.png",
-    "Description": "Gaming mouse with precision sensor and RGB lighting.",
+    "BrandId": 7,
+    "Model": "Razer DeathAdder V2",
+    "ImageUrl": "/images/mouses/razer/1.png",
+    "Description": "Ergonomic gaming mouse with optical sensor.",
     "Price": 80.00
   },
   {
     "DeviceGroupId": 3,
-    "BrandId": 4,
-    "Model": "HP Omen Vector Mouse",
-    "ImageUrl": "/images/hp.png",
-    "Description": "High-precision gaming mouse with adjustable DPI.",
-    "Price": 60.00
-  },
-  {
-    "DeviceGroupId": 3,
-    "BrandId": 6,
-    "Model": "Apple Magic Mouse 2",
-    "ImageUrl": "/images/apple.png",
-    "Description": "Wireless mouse with sleek design and smooth tracking.",
-    "Price": 79.00
-  },
-  {
-    "DeviceGroupId": 3,
-    "BrandId": 7,
-    "Model": "Acer Predator Cestus 500",
-    "ImageUrl": "/images/acer.png",
-    "Description": "Gaming mouse with customizable RGB lighting and buttons.",
+    "BrandId": 10,
+    "Model": "Corsair Sabre RGB Pro",
+    "ImageUrl": "/images/mouses/corsair/1.png",
+    "Description": "High-performance gaming mouse with customizable buttons.",
     "Price": 70.00
   },
   {
-    "DeviceGroupId": 3,
-    "BrandId": 8,
-    "Model": "Razer DeathAdder V2",
-    "ImageUrl": "/images/razer.png",
-    "Description": "Ergonomic gaming mouse with optical sensor.",
-    "Price": 80.00
+    "DeviceGroupId": 4,
+    "BrandId": 2,
+    "Model": "ASUS ROG Swift PG32UCDM",
+    "ImageUrl": "/images/monitors/asus/1.png",
+    "Description": "4K gaming monitor with high refresh rate.",
+    "Price": 900.00
+  },
+  {
+    "DeviceGroupId": 4,
+    "BrandId": 3,
+    "Model": "MSI MPG321URX",
+    "ImageUrl": "/images/monitors/msi/1.png",
+    "Description": "QD-OLED monitor with vibrant colors and fast response.",
+    "Price": 1100.00
   },
   {
     "DeviceGroupId": 4,
     "BrandId": 5,
     "Model": "Dell UltraSharp U2720Q",
-    "ImageUrl": "/images/dell.png",
+    "ImageUrl": "/images/monitors/dell/1.png",
     "Description": "4K monitor with excellent color accuracy.",
     "Price": 400.00
   },
   {
     "DeviceGroupId": 4,
-    "BrandId": 6,
-    "Model": "Apple Studio Display",
-    "ImageUrl": "/images/apple.png",
-    "Description": "Retina 5K monitor with superb image quality.",
-    "Price": 1600.00
-  },
-  {
-    "DeviceGroupId": 4,
-    "BrandId": 9,
+    "BrandId": 8,
     "Model": "Samsung Odyssey G9",
-    "ImageUrl": "/images/samsung.png",
+    "ImageUrl": "/images/monitors/samsung/1.png",
     "Description": "Super ultrawide 49-inch curved gaming monitor.",
     "Price": 1500.00
   },
   {
-    "DeviceGroupId": 4,
-    "BrandId": 4,
-    "Model": "HP EliteDisplay E243",
-    "ImageUrl": "/images/hp.png",
-    "Description": "24-inch monitor with full HD resolution and great color performance.",
-    "Price": 250.00
-  },
-  {
-    "DeviceGroupId": 4,
-    "BrandId": 7,
-    "Model": "Acer Predator XB273K",
-    "ImageUrl": "/images/acer.png",
-    "Description": "4K monitor with G-Sync support and fast refresh rate.",
-    "Price": 800.00
-  },
-  {
     "DeviceGroupId": 5,
-    "BrandId": 7,
+    "BrandId": 6,
     "Model": "Acer Predator Galea 500",
-    "ImageUrl": "/images/acer.png",
+    "ImageUrl": "/images/headsets/acer/1.png",
     "Description": "Gaming headset with surround sound and microphone.",
     "Price": 120.00
   },
   {
     "DeviceGroupId": 5,
-    "BrandId": 10,
+    "BrandId": 9,
     "Model": "Logitech G Pro X Headset",
-    "ImageUrl": "/images/logitech.png",
+    "ImageUrl": "/images/headsets/logitech/1.png",
     "Description": "Esports-grade headset with Blue VO!CE microphone technology.",
     "Price": 130.00
   },
   {
     "DeviceGroupId": 5,
-    "BrandId": 6,
-    "Model": "Apple AirPods Pro",
-    "ImageUrl": "/images/apple.png",
-    "Description": "Noise-cancelling earbuds with superior sound quality.",
-    "Price": 249.00
+    "BrandId": 10,
+    "Model": "Corsair HS80",
+    "ImageUrl": "/images/headsets/corsair/1.png",
+    "Description": "High-quality gaming headset with 7.1 surround sound.",
+    "Price": 150.00
   },
   {
     "DeviceGroupId": 5,
-    "BrandId": 9,
-    "Model": "Samsung Galaxy Buds Pro",
-    "ImageUrl": "/images/samsung.png",
-    "Description": "True wireless earbuds with excellent sound quality.",
-    "Price": 199.00
-  },
-  {
-    "DeviceGroupId": 5,
-    "BrandId": 8,
-    "Model": "Razer Kraken X",
-    "ImageUrl": "/images/razer.png",
-    "Description": "Lightweight gaming headset with 7.1 surround sound.",
-    "Price": 50.00
+    "BrandId": 11,
+    "Model": "SteelSeries Arctis Nova Pro Wireless",
+    "ImageUrl": "/images/headsets/steelseries/1.png",
+    "Description": "Premium wireless gaming headset with excellent audio.",
+    "Price": 250.00
   }
 ]
