@@ -24,6 +24,46 @@
     "Price": 1800.00
   },
   {
+    "DeviceGroupId": 1,
+    "BrandId": 4,
+    "Model": "HP Spectre x360",
+    "ImageUrl": "/images/hp.png",
+    "Description": "Premium convertible laptop with 4K display.",
+    "Price": 1400.00
+  },
+  {
+    "DeviceGroupId": 1,
+    "BrandId": 5,
+    "Model": "Dell XPS 13",
+    "ImageUrl": "/images/dell.png",
+    "Description": "Compact, ultra-portable laptop with excellent battery life.",
+    "Price": 1200.00
+  },
+  {
+    "DeviceGroupId": 1,
+    "BrandId": 6,
+    "Model": "Apple MacBook Pro 16\"",
+    "ImageUrl": "/images/apple.png",
+    "Description": "Powerful laptop with M1 Pro chip for professional use.",
+    "Price": 2400.00
+  },
+  {
+    "DeviceGroupId": 1,
+    "BrandId": 7,
+    "Model": "Acer Swift 3",
+    "ImageUrl": "/images/acer.png",
+    "Description": "Affordable ultrabook with solid performance.",
+    "Price": 800.00
+  },
+  {
+    "DeviceGroupId": 1,
+    "BrandId": 8,
+    "Model": "Razer Blade 15",
+    "ImageUrl": "/images/razer.png",
+    "Description": "Slim and powerful gaming laptop with an OLED display.",
+    "Price": 2000.00
+  },
+  {
     "DeviceGroupId": 2,
     "BrandId": 10,
     "Model": "Logitech G Pro X Keyboard",
@@ -40,6 +80,30 @@
     "Price": 150.00
   },
   {
+    "DeviceGroupId": 2,
+    "BrandId": 6,
+    "Model": "Apple Magic Keyboard",
+    "ImageUrl": "/images/apple.png",
+    "Description": "Compact wireless keyboard with great key response.",
+    "Price": 99.00
+  },
+  {
+    "DeviceGroupId": 2,
+    "BrandId": 9,
+    "Model": "Samsung Galaxy Keyboard",
+    "ImageUrl": "/images/samsung.png",
+    "Description": "Wireless keyboard with a sleek design and good key travel.",
+    "Price": 100.00
+  },
+  {
+    "DeviceGroupId": 2,
+    "BrandId": 5,
+    "Model": "Dell KM117 Wireless Keyboard",
+    "ImageUrl": "/images/dell.png",
+    "Description": "Affordable wireless keyboard and mouse combo.",
+    "Price": 40.00
+  },
+  {
     "DeviceGroupId": 3,
     "BrandId": 10,
     "Model": "Logitech MX Master 3",
@@ -53,6 +117,38 @@
     "Model": "Samsung Odyssey Mouse",
     "ImageUrl": "/images/samsung.png",
     "Description": "Gaming mouse with precision sensor and RGB lighting.",
+    "Price": 80.00
+  },
+  {
+    "DeviceGroupId": 3,
+    "BrandId": 4,
+    "Model": "HP Omen Vector Mouse",
+    "ImageUrl": "/images/hp.png",
+    "Description": "High-precision gaming mouse with adjustable DPI.",
+    "Price": 60.00
+  },
+  {
+    "DeviceGroupId": 3,
+    "BrandId": 6,
+    "Model": "Apple Magic Mouse 2",
+    "ImageUrl": "/images/apple.png",
+    "Description": "Wireless mouse with sleek design and smooth tracking.",
+    "Price": 79.00
+  },
+  {
+    "DeviceGroupId": 3,
+    "BrandId": 7,
+    "Model": "Acer Predator Cestus 500",
+    "ImageUrl": "/images/acer.png",
+    "Description": "Gaming mouse with customizable RGB lighting and buttons.",
+    "Price": 70.00
+  },
+  {
+    "DeviceGroupId": 3,
+    "BrandId": 8,
+    "Model": "Razer DeathAdder V2",
+    "ImageUrl": "/images/razer.png",
+    "Description": "Ergonomic gaming mouse with optical sensor.",
     "Price": 80.00
   },
   {
@@ -72,11 +168,67 @@
     "Price": 1600.00
   },
   {
+    "DeviceGroupId": 4,
+    "BrandId": 9,
+    "Model": "Samsung Odyssey G9",
+    "ImageUrl": "/images/samsung.png",
+    "Description": "Super ultrawide 49-inch curved gaming monitor.",
+    "Price": 1500.00
+  },
+  {
+    "DeviceGroupId": 4,
+    "BrandId": 4,
+    "Model": "HP EliteDisplay E243",
+    "ImageUrl": "/images/hp.png",
+    "Description": "24-inch monitor with full HD resolution and great color performance.",
+    "Price": 250.00
+  },
+  {
+    "DeviceGroupId": 4,
+    "BrandId": 7,
+    "Model": "Acer Predator XB273K",
+    "ImageUrl": "/images/acer.png",
+    "Description": "4K monitor with G-Sync support and fast refresh rate.",
+    "Price": 800.00
+  },
+  {
     "DeviceGroupId": 5,
     "BrandId": 7,
     "Model": "Acer Predator Galea 500",
     "ImageUrl": "/images/acer.png",
     "Description": "Gaming headset with surround sound and microphone.",
     "Price": 120.00
+  },
+  {
+    "DeviceGroupId": 5,
+    "BrandId": 10,
+    "Model": "Logitech G Pro X Headset",
+    "ImageUrl": "/images/logitech.png",
+    "Description": "Esports-grade headset with Blue VO!CE microphone technology.",
+    "Price": 130.00
+  },
+  {
+    "DeviceGroupId": 5,
+    "BrandId": 6,
+    "Model": "Apple AirPods Pro",
+    "ImageUrl": "/images/apple.png",
+    "Description": "Noise-cancelling earbuds with superior sound quality.",
+    "Price": 249.00
+  },
+  {
+    "DeviceGroupId": 5,
+    "BrandId": 9,
+    "Model": "Samsung Galaxy Buds Pro",
+    "ImageUrl": "/images/samsung.png",
+    "Description": "True wireless earbuds with excellent sound quality.",
+    "Price": 199.00
+  },
+  {
+    "DeviceGroupId": 5,
+    "BrandId": 8,
+    "Model": "Razer Kraken X",
+    "ImageUrl": "/images/razer.png",
+    "Description": "Lightweight gaming headset with 7.1 surround sound.",
+    "Price": 50.00
   }
 ]
