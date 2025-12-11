@@ -1,7 +1,7 @@
 export class ShopParams {
     brands: string[] = [];
     groups: string[] = [];
-    sort = 'name';
+    sort = 'model';
     pageNumber = 1;
     pageSize = 10;
     search = '';

@@ -1,7 +1,7 @@
    
    @if(device){
 
-  <mat-card class="overflow-hidden shadow-lg rounded-lg">
+  <mat-card class="overflow-hidden shadow-lg rounded-lg" routerLink="/shop/{{device.id}}" class="device-card">
     <img src="{{device.imageUrl}}" alt="{{device.model}}" class="w-full h-60 object-cover">
     <mat-card-content class="mt-2">
         <h2 class="text-sm font-semibold uppercase text-primary">{{device.model}}</h2>

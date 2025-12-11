@@ -46,7 +46,7 @@ export class Shop  implements OnInit {
   devices?: Pagination<Device>;
 
   sortOptions = [
-    {name: 'Alphabetical' , value:'name'},
+    {name: 'Alphabetical(Model)' , value:'model'},
     {name: 'Price: Low-High', value: 'priceAsc'},
     {name: 'Price: High-Low', value: 'priceDesc'},
   ]

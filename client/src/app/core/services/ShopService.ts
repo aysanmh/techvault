@@ -48,6 +48,13 @@ export class ShopService {
 
    }
 
+   getDevice(id: number){
+    return this.http.get<Device>(this.baseUrl + 'devices/' + id);
+   }
+
+
+
+
    getBrands(){
 
       if(this.brands.length > 0) return;
