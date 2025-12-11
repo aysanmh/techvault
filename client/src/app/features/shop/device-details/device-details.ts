@@ -8,6 +8,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatLabel } from '@angular/material/select';
 import {MatInput} from '@angular/material/input';
 import { MatDivider } from '@angular/material/divider';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-device-details',
@@ -18,6 +19,7 @@ import { MatDivider } from '@angular/material/divider';
     MatFormField,
     MatInput,
     MatLabel,
+    MatProgressBar
     
   ],
   templateUrl: './device-details.html',

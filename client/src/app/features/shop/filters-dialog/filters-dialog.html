@@ -1,32 +1,23 @@
-<div class="filters-container p-4 rounded-lg">
-  <h3 class="text-3xl text-center pt-6 mb-3">Filters</h3>
-  <mat-divider></mat-divider>
+<div class="filters-container p-6 rounded-lg shadow-lg bg-gradient-to-br from-[#1A1E2E] to-[#2A2A3F] border border-[#333]">
+  <h3 class="text-3xl text-center pt-6 mb-4 text-[#FF4EC3]">Filters</h3>
+  <mat-divider class="border-gray-600"></mat-divider>
 
-  <div class="flex gap-4 mt-4">
-    <!-- Brands -->
-    <div class="w-1/2">
-      <h4 class="font-semibold text-xl mb-2">Brands</h4>
-      <mat-selection-list [(ngModel)]="selectedBrands" [multiple]="true">
-        <mat-list-option *ngFor="let brand of shopService.brands" [value]="brand">
-          {{ brand }}
-        </mat-list-option>
+  <div class="flex flex-col md:flex-row gap-6 mt-6">
+    <div class="flex-1">
+      <h4 class="font-semibold text-xl mb-2 text-[#00FFFF]">Brands</h4>
+      <mat-selection-list [(ngModel)]="selectedBrands" [multiple]="true" class="bg-[#1A1E2E] text-[#E0E0E0] rounded-md">
+        <mat-list-option *ngFor="let brand of shopService.brands" [value]="brand">{{ brand }}</mat-list-option>
       </mat-selection-list>
     </div>
-
-    <!-- Groups -->
-    <div class="w-1/2">
-      <h4 class="font-semibold text-xl mb-2">Groups</h4>
-      <mat-selection-list [(ngModel)]="selectedGroups" [multiple]="true">
-        <mat-list-option *ngFor="let group of shopService.groups" [value]="group">
-          {{ group }}
-        </mat-list-option>
+    <div class="flex-1">
+      <h4 class="font-semibold text-xl mb-2 text-[#00FFFF]">Groups</h4>
+      <mat-selection-list [(ngModel)]="selectedGroups" [multiple]="true" class="bg-[#1A1E2E] text-[#E0E0E0] rounded-md">
+        <mat-list-option *ngFor="let group of shopService.groups" [value]="group">{{ group }}</mat-list-option>
       </mat-selection-list>
     </div>
   </div>
 
-  <div class="flex justify-end p-4 mt-4">
-    <button mat-flat-button color="primary" (click)="applyFilters()">
-      Apply Filters
-    </button>
+  <div class="flex justify-end mt-6">
+    <button mat-flat-button color="primary" class="bg-[#2A2A3F] text-[#E0E0E0] hover:shadow-[0_0_10px_#00FFFF55,0_0_15px_#FF4EC355] hover:border-[#FF4EC3] border border-[#333] transition-all duration-200" (click)="applyFilters()">Apply Filters</button>
   </div>
 </div>
