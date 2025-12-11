@@ -1,25 +1,23 @@
-@if(device){
-
-  <section class="py-8">
+<div *ngIf="device()" class="py-8">
   <div class="max-w-screen-2xl px-4 mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="max-w-xl mx-auto">
-        <img class="w-full rounded-lg shadow-lg" src="{{device.imageUrl}}" alt="device image">
+        <img
+          class="w-full rounded-lg shadow-lg"
+          [src]="device()?.imageUrl"
+          [alt]="device()?.model"
+        />
       </div>
       <div class="flex flex-col justify-start gap-4">
-        <h1 class="text-3xl font-semibold text-[#FF4EC3]">{{device.model}}</h1>
-        <p class="text-3xl font-extrabold text-[#00FFFF]">{{device.price | currency}}</p>
+        <h1 class="text-3xl font-semibold text-[#FF4EC3]">{{ device()?.model }}</h1>
+        <p class="text-3xl font-extrabold text-[#00FFFF]">{{ device()?.price | currency }}</p>
         <div>
           <button mat-flat-button class="match-input-height flex items-center gap-2 px-4 py-2">
             <mat-icon>shopping_cart</mat-icon> Add to cart
           </button>
         </div>
-        <p class="mt-4 text-gray-300">{{device.description}}</p>
+        <p class="mt-4 text-gray-300">{{ device()?.description }}</p>
       </div>
     </div>
   </div>
-</section>
-
-    
-}
-
+</div>

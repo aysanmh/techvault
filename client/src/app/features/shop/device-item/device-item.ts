@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-device-item',
+  standalone: true,
   imports: [
     MatCard,
     MatCardContent,
