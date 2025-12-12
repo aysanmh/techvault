@@ -1,8 +1,10 @@
 using API.Middleware;
 using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Services;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +34,16 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 builder.Services.AddCors();
 
+builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Redis")
+     ?? throw new Exception("Cannot get redis connection string");
+    var configuration = ConfigurationOptions.Parse(connectionString,true);
+    return ConnectionMultiplexer.Connect(configuration);
 
+});
+
+builder.Services.AddSingleton<ICartService,CartService>();
 
 var app = builder.Build();
 
