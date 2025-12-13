@@ -19,8 +19,21 @@
             "styles": ["src/styles.scss"]
           },
           "configurations": {
-            "production": { "optimization": true, "outputHashing": "all" },
-            "development": { "optimization": false, "extractLicenses": false, "sourceMap": false }
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.production.ts"
+                }
+              ]
+            },
+            "development": { 
+              "optimization": false, 
+              "extractLicenses": false, 
+              "sourceMap": false 
+            }
           },
           "defaultConfiguration": "development"
         },

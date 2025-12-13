@@ -1,32 +1,31 @@
 @if (device) {
-  <mat-card 
-    class="overflow-hidden rounded-lg shadow-lg hover:shadow-[0_0_15px_#00FFFF33,0_0_20px_#FF4EC333] 
-           transition-all duration-200 flex flex-col h-full cursor-pointer"
-    [routerLink]="['/shop', device.id]"
-  >
-    <div class="h-60 w-full overflow-hidden rounded-t-lg">
-      <img [src]="device.imageUrl" [alt]="device.model" class="w-full h-full object-cover" />
-    </div>
+<mat-card
+  class="overflow-hidden rounded-lg shadow-lg hover:shadow-[0_0_15px_#00FFFF33,0_0_20px_#FF4EC333] transition-all duration-200 flex flex-col h-full cursor-pointer"
+  [routerLink]="['/shop', device.id]"
+>
+  <div class="h-60 w-full overflow-hidden rounded-t-lg">
+    <img [src]="device.imageUrl" [alt]="device.model" class="w-full h-full object-cover" />
+  </div>
 
-    <mat-card-content class="mt-2 flex-1 flex flex-col justify-between">
-      <h2 class="text-sm font-semibold uppercase text-[#FF4EC3]">
-        {{ device.model }}
-      </h2>
+  <mat-card-content class="mt-2 flex-1 flex flex-col justify-between">
+    <h2 class="text-sm font-semibold uppercase text-[#FF4EC3]">
+      {{ device.model }}
+    </h2>
 
-      <p class="font-bold text-[#00FFFF] mt-1">
-        {{ device.price | currency }}
-      </p>
-    </mat-card-content>
+    <p class="font-bold text-[#00FFFF] mt-1">
+      {{ device.price | currency }}
+    </p>
+  </mat-card-content>
 
-    <mat-card-actions class="mt-auto">
-      <button 
-        mat-stroked-button 
-        class="w-full text-[#00FFFF] hover:shadow-[0_0_10px_#00FFFF55] 
-               transition-all duration-200 flex items-center justify-center gap-2"
-      >
-        <mat-icon>add_shopping_cart</mat-icon>
-        Add to cart
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <mat-card-actions (click)="$event.stopPropagation()" class="mt-auto">
+    <button
+      mat-stroked-button
+      class="w-full text-[#00FFFF] hover:shadow-[0_0_10px_#00FFFF55] transition-all duration-200 flex items-center justify-center gap-2"
+      (click)="cartService.addItemToCart(device)"
+    >
+      <mat-icon>add_shopping_cart</mat-icon>
+      Add to cart
+    </button>
+  </mat-card-actions>
+</mat-card>
 }

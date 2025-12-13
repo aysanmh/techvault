@@ -4,6 +4,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { BusyService } from '../../core/services/BusyService';
+import { CartService } from '../../core/services/CartService';
+import { MatBadgeModule } from '@angular/material/badge';
+
 
 @Component({
   selector: 'app-header',
@@ -12,7 +15,8 @@ import { BusyService } from '../../core/services/BusyService';
     CommonModule,
     MatProgressBarModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatBadgeModule
   ],
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
@@ -20,6 +24,7 @@ import { BusyService } from '../../core/services/BusyService';
 export class Header {
 
 
-  busyService = inject(BusyService)
+  busyService = inject(BusyService);
+  cartService = inject(CartService);
 
 }
