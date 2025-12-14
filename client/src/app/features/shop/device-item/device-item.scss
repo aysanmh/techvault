@@ -1,9 +1,35 @@
-.device-card{
-    transition: transform 0.2s, box-shadow 0.2s;
+mat-card {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
 }
-.device-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    cursor: pointer;
 
+mat-card h2 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-accent-pink);
+}
+
+mat-card p {
+  font-weight: 700;
+  margin-top: 0.25rem; 
+  color: var(--color-accent-cyan);
+}
+
+mat-card-actions button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  color: var(--color-accent-cyan);
+}
+
+mat-card-actions button:hover {
+  box-shadow: 0 0 10px var(--color-accent-cyan)55;
+}
+
+mat-card:hover {
+  box-shadow: 0 0 15px var(--color-accent-cyan)33, 0 0 20px var(--color-accent-pink)33;
 }

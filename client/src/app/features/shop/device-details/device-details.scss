@@ -1,0 +1,80 @@
+.device-detail {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+  color: var(--color-text);
+}
+
+.device-detail-container {
+  max-width: 1280px; /* max-w-screen-2xl */
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.device-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.device-image-container {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .device-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    object-fit: contain; /* ensures the entire image fits nicely */
+  }
+}
+
+.device-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  .device-model {
+    font-size: 1.875rem; 
+    font-weight: 600; 
+    color: var(--color-accent-pink);
+  }
+
+  .device-price {
+    font-size: 1.875rem; 
+    font-weight: 800; 
+    color: var(--color-accent-cyan);
+  }
+
+  .device-add-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    width: fit-content;
+    background-color: var(--color-bg-alt);
+    color: var(--color-accent-cyan);
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+
+    mat-icon {
+      font-size: 1.25rem;
+    }
+
+    &:hover {
+      box-shadow: 0 0 10px var(--color-accent-cyan)55, 0 0 15px var(--color-accent-pink)55;
+    }
+  }
+
+  .device-description {
+    margin-top: var(--spacing-lg);
+    color: #c0c0c0;
+  }
+}

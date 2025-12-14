@@ -1,12 +1,12 @@
-<section>
-  <div class="mx-auto max-w-screen-xl">
-    <div class="flex w-full items-start gap-6 mt-32">
-      <div class="w-3/4">
+<section class="cart-section">
+  <div class="cart-container">
+    <div class="cart-grid">
+      <div class="cart-items">
         @for (item of cartService.cart()?.items; track item.deviceId){
             <app-cart-item [item] = "item"></app-cart-item>
         }
       </div>
-      <div class="w-1/4">
+      <div class="cart-summary">
         <app-order-summary></app-order-summary>
       </div>
     </div>

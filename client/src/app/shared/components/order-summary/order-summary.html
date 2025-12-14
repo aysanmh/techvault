@@ -1,49 +1,41 @@
-<div class="mx-auto max-w-4xl flex-1 space-y-6 w-full">
-  <div class="space-y-4 rounded-lg border border-gray-200 shadow-sm p-4">
-    <p class="text-xl font-semibold">Order summary</p>
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <dl class="flex items-center justify-between gap-4">
-          <dt class="font-medium text-gray-500">Subtotal</dt>
-          <dd class="font-medium text-gray-300">{{cartService.totals()?.subtotal | currency}}</dd>
+<div class="order-summary-wrapper">
+  <div class="order-summary-card">
+    <p class="order-summary-title">Order summary</p>
+    <div class="order-summary-details">
+      <div class="order-summary-items">
+        <dl class="order-summary-item">
+          <dt>Subtotal</dt>
+          <dd>{{ cartService.totals()?.subtotal | currency }}</dd>
         </dl>
-        <dl class="flex items-center justify-between gap-4">
-          <dt class="font-medium text-gray-500">Discount</dt>
-          <dd class="font-medium text-green-300">-{{cartService.totals()?.discount | currency}}</dd>
+        <dl class="order-summary-item">
+          <dt>Discount</dt>
+          <dd class="order-summary-discount">-{{ cartService.totals()?.discount | currency }}</dd>
         </dl>
-        <dl class="flex items-center justify-between gap-4">
-          <dt class="font-medium text-gray-500">Delivery fee</dt>
-          <dd class="font-medium text-gray-300">{{cartService.totals()?.shipping | currency}}</dd>
+        <dl class="order-summary-item">
+          <dt>Delivery fee</dt>
+          <dd>{{ cartService.totals()?.shipping | currency }}</dd>
         </dl>
       </div>
-      <dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
-        <dt class="font-medium text-gray-500">Total</dt>
-        <dd class="font-medium text-gray-300">{{cartService.totals()?.total | currency}}</dd>
+      <dl class="order-summary-total">
+        <dt>Total</dt>
+        <dd>{{ cartService.totals()?.total | currency }}</dd>
       </dl>
     </div>
 
-    <div class="flex flex-col gap-2">
-        <button routerLink="/checkout" mat-flat-button>Checkout</button>
-        <button routerLink="/shop" mat-button>Continue Shopping</button>
-
+    <div class="order-summary-actions">
+      <button routerLink="/checkout" mat-flat-button class="checkout-btn">Checkout</button>
+      <button routerLink="/shop" mat-button class="continue-btn">Continue Shopping</button>
     </div>
-
-
   </div>
-  <div class="space-y-4 rounded-lg border border-gray-200 shadow-sm">
-    <form class="space-y-2 flex flex-col p-2">
-        <label class="mb-2 block text-sm font-medium">
-            Do you have a voucher code?
-        </label>
-        <mat-form-field appearance="outline">
-            <mat-label>Voucher code</mat-label>
-            <input type="text" matInput>
-        </mat-form-field>
 
-        <button mat-flat-button>Apply code</button>
+  <div class="voucher-card">
+    <form class="voucher-form">
+      <label class="voucher-label">Do you have a voucher code?</label>
+      <mat-form-field appearance="outline">
+        <mat-label>Voucher code</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+      <button mat-flat-button class="voucher-apply-btn">Apply code</button>
     </form>
   </div>
-
-
-
 </div>
