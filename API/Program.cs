@@ -61,7 +61,8 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
     
 app.UseMiddleware<ExceptionMiddleware>();
 
-
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

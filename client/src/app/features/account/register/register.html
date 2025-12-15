@@ -1,0 +1,24 @@
+<mat-card class="register-card">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="register-header">
+      <h1>Register</h1>
+    </div>
+    <app-text-input label="First name" formControlName="firstName" />
+    <app-text-input label="Last name" formControlName="lastName" />
+    <app-text-input label="Email" formControlName="email" />
+    <app-text-input label="Password" formControlName="password" />
+
+    @if (validationErrors) {
+    <div class="mb-3">
+      <ul class="list-disc px-3">
+        @for (error of validationErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+    </div>
+    }
+    <button [disabled]="registerForm.invalid" mat-flat-button type="submit" class="register-button">
+      Sign in
+    </button>
+  </form>
+</mat-card>
