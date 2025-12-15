@@ -7,7 +7,7 @@ namespace Core.Specification
     {
         public BrandListSpecification()
         {
-            AddSelect(x => x.Brand.BrandName);
+            AddSelect(x => x.Brand!.BrandName);
             ApplyDistinct();
             
         }

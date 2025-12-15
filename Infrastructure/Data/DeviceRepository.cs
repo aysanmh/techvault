@@ -20,16 +20,16 @@ namespace Infrastructure.Data
 
         public async Task<IReadOnlyList<Brand>> GetBrandsAsync()
         {
-            return await context.Devices.Select(x => x.Brand)
-            .Distinct()
+            return await context.Brands
+            .OrderBy(x => x.BrandName)
             .ToListAsync();
 
         }
 
         public async Task<IReadOnlyList<DeviceGroup>> GetGroupsAsync()
         {
-            return await context.Devices.Select(x => x.DeviceGroup)
-            .Distinct()
+            return await context.Groups
+            .OrderBy(x => x.GroupName)
             .ToListAsync();
         }
 
@@ -50,10 +50,10 @@ namespace Infrastructure.Data
                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(brand))
-                query = query.Where(d => d.Brand.BrandName == brand);
+                query = query.Where(d => d.Brand!.BrandName == brand);
 
             if (!string.IsNullOrEmpty(deviceGroup))
-                query = query.Where(d => d.DeviceGroup.GroupName == deviceGroup);
+                query = query.Where(d => d.DeviceGroup!.GroupName == deviceGroup);
 
             query = sort switch
             {

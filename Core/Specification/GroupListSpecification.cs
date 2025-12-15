@@ -7,7 +7,7 @@ namespace Core.Specification
     {
         public GroupListSpecification()
         {
-            AddSelect(x => x.DeviceGroup.GroupName);
+            AddSelect(x => x.DeviceGroup!.GroupName);
             ApplyDistinct();
         }
         

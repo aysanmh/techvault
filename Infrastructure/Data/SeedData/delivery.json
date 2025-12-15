@@ -1,0 +1,62 @@
+[
+  {
+    "ShortName": "STD",
+    "DeliveryTime": "5-7 Business Days",
+    "Description": "Standard ground shipping with basic tracking",
+    "Price": 5.99
+  },
+  {
+    "ShortName": "EXP",
+    "DeliveryTime": "2-3 Business Days",
+    "Description": "Expedited shipping for faster delivery",
+    "Price": 12.99
+  },
+  {
+    "ShortName": "NEXT",
+    "DeliveryTime": "Next Business Day",
+    "Description": "Next-day delivery for urgent orders",
+    "Price": 24.99
+  },
+  {
+    "ShortName": "SAMEDAY",
+    "DeliveryTime": "Same Day",
+    "Description": "Same-day delivery within selected cities",
+    "Price": 34.99
+  },
+  {
+    "ShortName": "INTL_STD",
+    "DeliveryTime": "7-14 Business Days",
+    "Description": "International standard shipping",
+    "Price": 19.99
+  },
+  {
+    "ShortName": "INTL_EXP",
+    "DeliveryTime": "3-5 Business Days",
+    "Description": "International express shipping",
+    "Price": 39.99
+  },
+  {
+    "ShortName": "ECON",
+    "DeliveryTime": "8-10 Business Days",
+    "Description": "Economy shipping for non-urgent deliveries",
+    "Price": 3.99
+  },
+  {
+    "ShortName": "PICKUP",
+    "DeliveryTime": "Ready in 24 Hours",
+    "Description": "Store pickup with no delivery charge",
+    "Price": 0.00
+  },
+  {
+    "ShortName": "LOCKER",
+    "DeliveryTime": "3-4 Business Days",
+    "Description": "Delivery to a secure pickup locker",
+    "Price": 6.49
+  },
+  {
+    "ShortName": "FREIGHT",
+    "DeliveryTime": "5-10 Business Days",
+    "Description": "Freight shipping for large or heavy items",
+    "Price": 59.99
+  }
+]

@@ -26,8 +26,8 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
             ImageUrl = d.ImageUrl,
             Description = d.Description,
             Price = d.Price,
-            BrandName = d.Brand?.BrandName,
-            DeviceGroupName = d.DeviceGroup?.GroupName
+            BrandName = d.Brand!.BrandName,
+            DeviceGroupName = d.DeviceGroup!.GroupName
         }).ToList();
 
         return CreatePagedResult(dtos, specParams.PageIndex, specParams.PageSize, count);
@@ -38,9 +38,11 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
     [HttpGet("{id:int}")]
     public async Task<ActionResult<DeviceDto>> GetDeviceById(int id)
     {
-        var device = await repository.GetByIdAsync(id);
+        var spec = new DeviceByIdSpecification(id);
+        var device = await repository.GetEntityWithSpec(spec);
 
-        if (device == null) return NotFound();
+        if (device == null)
+            return NotFound(new { Message = $"Device with id {id} not found." });
 
         return new DeviceDto
         {
@@ -49,8 +51,8 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
             ImageUrl = device.ImageUrl,
             Description = device.Description,
             Price = device.Price,
-            BrandName = device.Brand?.BrandName,
-            DeviceGroupName = device.DeviceGroup?.GroupName
+            BrandName = device.Brand!.BrandName,
+            DeviceGroupName = device.DeviceGroup!.GroupName
         };
     }
 
@@ -58,109 +60,131 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
     public async Task<ActionResult<IReadOnlyList<Brand>>> GetBrands()
     {
         var spec = new BrandListSpecification();
+        var brands = await repository.ListAsync(spec);
 
-        return Ok(await repository.ListAsync(spec));
+        if (brands == null || !brands.Any())
+            return NotFound(new { Message = "No brands found." });
+
+        return Ok(brands);
     }
 
-
-    [HttpGet("groups")]
+   [HttpGet("groups")]
     public async Task<ActionResult<IReadOnlyList<DeviceGroup>>> GetGroups()
     {
-
         var spec = new GroupListSpecification();
+        var groups = await repository.ListAsync(spec);
 
-        return Ok(await repository.ListAsync(spec));
+        if (groups == null || !groups.Any())
+            return NotFound(new { Message = "No device groups found." });
+
+        return Ok(groups);
     }
      
     [HttpPost]
     public async Task<ActionResult<DeviceDto>> CreateDevice(DeviceCreateDto dto)
     {
-        var device = new Device
+    
+        try
         {
-            BrandId = dto.BrandId,
-            DeviceGroupId = dto.DeviceGroupId,
-            Model = dto.Model,
-            ImageUrl = dto.ImageUrl,
-            Description = dto.Description,
-            Price = dto.Price
-        };
+            var device = new Device
+            {
+                BrandId = dto.BrandId,
+                DeviceGroupId = dto.DeviceGroupId,
+                Model = dto.Model,
+                ImageUrl = dto.ImageUrl,
+                Description = dto.Description,
+                Price = dto.Price
+            };
 
-        repository.Add(device);
+            repository.Add(device);
 
-        if (await repository.SaveAllAsync())
-        {
+            if (!await repository.SaveAllAsync())
+                return StatusCode(500, new { Message = "Problem creating device in the database." });
+
+            // Reload device including Brand and DeviceGroup
+            var spec = new DeviceByIdSpecification(device.Id);
+            var createdDevice = await repository.GetEntityWithSpec(spec);
+
             var deviceToReturn = new DeviceDto
             {
-                Id = device.Id,
-                Model = device.Model,
-                ImageUrl = device.ImageUrl,
-                Description = device.Description,
-                Price = device.Price,
-                BrandName = device.Brand?.BrandName, 
-                DeviceGroupName = device.DeviceGroup?.GroupName
+                Id = createdDevice!.Id,
+                Model = createdDevice.Model,
+                ImageUrl = createdDevice.ImageUrl,
+                Description = createdDevice.Description,
+                Price = createdDevice.Price,
+                BrandName = createdDevice.Brand!.BrandName,
+                DeviceGroupName = createdDevice.DeviceGroup!.GroupName
             };
 
             return CreatedAtAction(nameof(GetDeviceById),
-                new { id = device.Id },
+                new { id = createdDevice.Id },
                 deviceToReturn);
         }
-
-        return BadRequest("Problem creating device");
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = $"Internal server error: {ex.Message}" });
+        }
     }
 
 
 
     [HttpPut("{id:int}")]
     public async Task<ActionResult> UpdateDevice(int id, DeviceCreateDto dto)
-    {   
-        
-        var device = await repository.GetByIdAsync(id);
-
-        if (device == null) return NotFound();
-
-
-        device.BrandId = dto.BrandId;
-
-        device.DeviceGroupId = dto.DeviceGroupId;
-
-        device.Model = dto.Model;
-
-        device.ImageUrl = dto.ImageUrl;
-
-        device.Description = dto.Description;
-
-        device.Price = dto.Price;
-
-
-        repository.Update(device);
-
-        if (await repository.SaveAllAsync())
-            return NoContent();
-
-        return BadRequest("Problem updating device");
-    }
-
-
-     [HttpDelete("{id:int}")]
-     public async Task<ActionResult> DeleteDevice(int id)
     {
-        var device = await repository.GetByIdAsync(id);
+        try
+        {
+            var spec = new DeviceByIdSpecification(id);
+            var device = await repository.GetEntityWithSpec(spec);
 
+            if (device == null)
+                return NotFound(new { Message = $"Device with id {id} not found." });
 
-        if (device == null) return NotFound();
+            device.BrandId = dto.BrandId;
+            device.DeviceGroupId = dto.DeviceGroupId;
+            device.Model = dto.Model;
+            device.ImageUrl = dto.ImageUrl;
+            device.Description = dto.Description;
+            device.Price = dto.Price;
 
-        repository.Remove(device);
+            repository.Update(device);
 
-        if (await repository.SaveAllAsync())
+            if (!await repository.SaveAllAsync())
+                return StatusCode(500, new { Message = "Problem updating device in the database." });
+
             return NoContent();
-
-        return BadRequest("Problem deleting device");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = $"Internal server error: {ex.Message}" });
+        }
     }
 
-    private bool DevcieExists(int id)
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteDevice(int id)
     {
-        return repository.Exists(id);
+        try
+        {
+            var spec = new DeviceByIdSpecification(id);
+            var device = await repository.GetEntityWithSpec(spec);
+
+            if (device == null)
+                return NotFound(new { Message = $"Device with id {id} not found." });
+
+            repository.Remove(device);
+
+            if (!await repository.SaveAllAsync())
+                return StatusCode(500, new { Message = "Problem deleting device from the database." });
+
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = $"Internal server error: {ex.Message}" });
+        }
     }
+
+      private bool DeviceExists(int id) => repository.Exists(id);
    
 
 }
