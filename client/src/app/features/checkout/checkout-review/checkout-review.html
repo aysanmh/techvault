@@ -1,0 +1,30 @@
+<div class="checkout-review-container">
+  <h4>Billing and delivery information</h4>
+  <dl>
+    <dt>Shipping address</dt>
+    <dd>{{confirmationToken?.shipping | address}}</dd>
+    <dt>Payment details</dt>
+    <dd>{{confirmationToken?.payment_method_preview | paymentCard}}</dd>
+  </dl>
+</div>
+
+<div class="order-summary-container">
+  <div class="table-wrapper">
+    <table>
+      <tbody>
+        @for(item of cartService.cart()?.items;track item.deviceId){
+          <tr>
+            <td>
+              <div class="item-flex">
+                <img src="{{item.imageUrl}}" alt="device image">
+                <span>{{item.deviceName}}</span>
+              </div>
+            </td>
+            <td>x{{item.quantity}}</td>
+            <td class="text-right">{{item.price | currency}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

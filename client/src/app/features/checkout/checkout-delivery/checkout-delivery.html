@@ -1,0 +1,16 @@
+<div class="checkout-delivery w-full">
+  <mat-radio-group 
+    [value]="selectedDelivery" 
+    (change)="updateDeliveryMethod($event.value)"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+  >
+    <label *ngFor="let method of deliveryMethods; trackBy: trackByMethodId" class="delivery-label">
+      <mat-radio-button [value]="method" class="w-full h-full">
+        <div class="method-content flex flex-col w-full h-full p-3 border border-gray-200 rounded hover:bg-purple-50">
+          <strong class="font-semibold text-lg">{{ method.shortName }} - {{ method.price | currency }}</strong>
+          <span class="text-sm text-gray-600">{{ method.description }}</span>
+        </div>
+      </mat-radio-button>
+    </label>
+  </mat-radio-group>
+</div>

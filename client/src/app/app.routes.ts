@@ -11,6 +11,7 @@ import { Login } from './features/account/login/login';
 import { Register } from './features/account/register/register';
 import { authGuard } from './core/guards/auth-guard';
 import { emptyCartGuard } from './core/guards/emptyCart-guard';
+import { CheckoutSuccess } from './features/checkout/checkout-success/checkout-success';
 
 export const routes: Routes = [
     {path: '' , component:Home},
@@ -18,6 +19,8 @@ export const routes: Routes = [
     {path:'shop/:id', component:DeviceDetails},
     {path:'cart', component: Cart},
     {path:'checkout',component:Checkout, canActivate:[authGuard,emptyCartGuard]},
+    {path:'checkout/success',component:CheckoutSuccess, canActivate:[authGuard]},
+
     {path:'account/login', component:Login},
     {path:'account/register', component:Register},
     {path: 'test-error', component: TestError},

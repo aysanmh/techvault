@@ -17,9 +17,10 @@ export type CartItemType = {
 };
 
 export class Cart implements CartType {
-  deliveryMethodId?: number;
-  paymentIntentId?: string;
-  clientSecret?: string;
+ 
   id = nanoid();
   items: CartItemType[] = [];
+   deliveryMethodId?: number;
+  paymentIntentId?: string;
+  clientSecret?: string;
 }

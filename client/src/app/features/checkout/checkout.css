@@ -1,0 +1,94 @@
+.checkout-container {
+  display: flex;
+  margin-top: 8rem;
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+}
+
+.checkout-main {
+  width: 75%;
+  background-color: var(--color-bg-alt);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+}
+
+.checkout-summary {
+  width: 25%;
+}
+
+.checkout-stepper {
+  background-color: transparent;
+
+  .mat-horizontal-stepper-header {
+    color: var(--color-text);
+  }
+
+  .mat-horizontal-stepper-header.mat-active {
+    color: var(--color-accent-cyan);
+  }
+}
+
+.stripe-element {
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+
+  mat-checkbox {
+    color: var(--color-text);
+
+    &.mat-accent .mat-checkbox-background {
+      background-color: var(--color-accent-cyan);
+    }
+  }
+}
+
+.stepper-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+
+  button {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    background: linear-gradient(
+      135deg,
+      var(--color-accent-cyan),
+      var(--color-accent-pink)
+    );
+    color: var(--color-bg-alt);
+    border: none;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 255, 255, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+mat-spinner {
+  color: var(--color-accent-cyan);
+}

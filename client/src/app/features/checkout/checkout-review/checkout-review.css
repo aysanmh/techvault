@@ -1,0 +1,58 @@
+.checkout-review-container {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.checkout-review-container h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.checkout-review-container dl dt {
+  font-weight: 500;
+}
+
+.checkout-review-container dl dd {
+  margin-top: 0.25rem;
+  color: #6b7280;
+}
+
+.order-summary-container {
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order-summary-container .table-wrapper {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-summary-container table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.order-summary-container tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-summary-container td {
+  padding: 1rem;
+}
+
+.order-summary-container td:first-child {
+  padding: 1rem 0.5rem;
+}
+
+.order-summary-container .item-flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.order-summary-container img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+}

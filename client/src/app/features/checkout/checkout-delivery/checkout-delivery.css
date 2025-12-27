@@ -1,0 +1,36 @@
+.checkout-delivery {
+  width: 100%;
+}
+
+.delivery-label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.delivery-label:hover .method-content {
+  background-color: #f5f3ff; 
+}
+
+.method-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid #e5e7eb; 
+  border-radius: 0.5rem; 
+  transition: background-color 0.2s;
+}
+
+.method-content strong {
+  font-weight: 600;
+  font-size: 1.125rem; 
+}
+
+.method-content .description {
+  font-size: 0.875rem; 
+  color: #4b5563;
+  margin-top: 0.25rem;
+}

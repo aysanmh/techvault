@@ -1,0 +1,108 @@
+.order-success {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background-color: var(--color-bg);
+}
+
+.order-card {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: var(--spacing-2xl);
+  background-color: var(--color-bg-alt);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.order-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent-cyan);
+}
+
+.order-subtitle {
+  text-align: center;
+  color: rgba(224, 224, 224, 0.8);
+  margin-bottom: var(--spacing-2xl);
+  line-height: 1.5;
+}
+
+.order-number {
+  font-weight: 600;
+  color: var(--color-accent-pink);
+}
+
+.order-summary {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 0.5rem;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-row dt {
+  font-weight: 500;
+  color: rgba(224, 224, 224, 0.7);
+}
+
+.summary-row dd {
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: right;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.order-button {
+  flex: 1;
+  padding: var(--spacing-md);
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-pink));
+  color: var(--color-bg);
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.order-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.25);
+}
+
+.order-button:active {
+  transform: translateY(0);
+}
+
+.order-button-outline {
+  flex: 1;
+  padding: var(--spacing-md);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid var(--color-accent-cyan);
+  border-radius: 0.75rem;
+  color: var(--color-accent-cyan);
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.order-button-outline:hover {
+  background-color: rgba(0, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.order-button-outline:active {
+  transform: translateY(0);
+}

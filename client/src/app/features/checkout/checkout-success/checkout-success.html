@@ -1,0 +1,29 @@
+<section class="order-success">
+  <div class="order-card">
+    <h2 class="order-header">Thanks for your fake order</h2>
+    <p class="order-subtitle">
+      Your order <span class="order-number">#42</span> will never be processed as this is a fake shop. 
+      We will not notify you once your order has shipped.
+    </p>
+
+    <div class="order-summary">
+      <dl class="summary-row">
+        <dt>Date</dt>
+        <dd>20 Sep 2100</dd>
+      </dl>
+      <dl class="summary-row">
+        <dt>Address</dt>
+        <dd>Address goes here</dd>
+      </dl>
+      <dl class="summary-row">
+        <dt>Amount</dt>
+        <dd>$100</dd>
+      </dl>
+    </div>
+
+    <div class="actions">
+      <button routerLink="/order/42" mat-flat-button class="order-button">View your order</button>
+      <button routerLink="/shop" mat-stroked-button class="order-button-outline">Continue shopping</button>
+    </div>
+  </div>
+</section>
