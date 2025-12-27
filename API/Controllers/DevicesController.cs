@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class DevicesController(IGenericRepository<Device> repository) : BaseApiController
+public class DevicesController(IUnitOfWork unit) : BaseApiController
 {
 
     [HttpGet]
@@ -16,8 +16,8 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
     {
         var spec = new DeviceSpecification(specParams);
 
-        var devices = await repository.ListAsync(spec);
-        var count = await repository.CountAsync(spec);
+        var devices = await unit.Repository<Device>().ListAsync(spec);
+        var count = await unit.Repository<Device>().CountAsync(spec);
 
         var dtos = devices.Select(d => new DeviceDto
         {
@@ -39,7 +39,7 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
     public async Task<ActionResult<DeviceDto>> GetDeviceById(int id)
     {
         var spec = new DeviceByIdSpecification(id);
-        var device = await repository.GetEntityWithSpec(spec);
+        var device = await unit.Repository<Device>().GetEntityWithSpec(spec);
 
         if (device == null)
             return NotFound(new { Message = $"Device with id {id} not found." });
@@ -60,7 +60,7 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
     public async Task<ActionResult<IReadOnlyList<Brand>>> GetBrands()
     {
         var spec = new BrandListSpecification();
-        var brands = await repository.ListAsync(spec);
+        var brands = await unit.Repository<Device>().ListAsync(spec);
 
         if (brands == null || !brands.Any())
             return NotFound(new { Message = "No brands found." });
@@ -72,7 +72,7 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
     public async Task<ActionResult<IReadOnlyList<DeviceGroup>>> GetGroups()
     {
         var spec = new GroupListSpecification();
-        var groups = await repository.ListAsync(spec);
+        var groups = await unit.Repository<Device>().ListAsync(spec);
 
         if (groups == null || !groups.Any())
             return NotFound(new { Message = "No device groups found." });
@@ -96,14 +96,14 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
                 Price = dto.Price
             };
 
-            repository.Add(device);
+            unit.Repository<Device>().Add(device);
 
-            if (!await repository.SaveAllAsync())
+            if (!await unit.Complete())
                 return StatusCode(500, new { Message = "Problem creating device in the database." });
 
-            // Reload device including Brand and DeviceGroup
+           
             var spec = new DeviceByIdSpecification(device.Id);
-            var createdDevice = await repository.GetEntityWithSpec(spec);
+            var createdDevice = await unit.Repository<Device>().GetEntityWithSpec(spec);
 
             var deviceToReturn = new DeviceDto
             {
@@ -134,7 +134,7 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
         try
         {
             var spec = new DeviceByIdSpecification(id);
-            var device = await repository.GetEntityWithSpec(spec);
+            var device = await unit.Repository<Device>().GetEntityWithSpec(spec);
 
             if (device == null)
                 return NotFound(new { Message = $"Device with id {id} not found." });
@@ -146,9 +146,9 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
             device.Description = dto.Description;
             device.Price = dto.Price;
 
-            repository.Update(device);
+            unit.Repository<Device>().Update(device);
 
-            if (!await repository.SaveAllAsync())
+            if (!await unit.Complete())
                 return StatusCode(500, new { Message = "Problem updating device in the database." });
 
             return NoContent();
@@ -166,14 +166,14 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
         try
         {
             var spec = new DeviceByIdSpecification(id);
-            var device = await repository.GetEntityWithSpec(spec);
+            var device = await unit.Repository<Device>().GetEntityWithSpec(spec);
 
             if (device == null)
                 return NotFound(new { Message = $"Device with id {id} not found." });
 
-            repository.Remove(device);
+            unit.Repository<Device>().Remove(device);
 
-            if (!await repository.SaveAllAsync())
+            if (!await unit.Complete())
                 return StatusCode(500, new { Message = "Problem deleting device from the database." });
 
             return NoContent();
@@ -184,7 +184,7 @@ public class DevicesController(IGenericRepository<Device> repository) : BaseApiC
         }
     }
 
-      private bool DeviceExists(int id) => repository.Exists(id);
+      private bool DeviceExists(int id) => unit.Repository<Device>().Exists(id);
    
 
 }

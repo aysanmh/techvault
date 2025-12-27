@@ -11,7 +11,10 @@ namespace Core.Interfaces
 
         Expression<Func<T,object>>? OrderBy {get;}
 
-        Expression<Func<T,object>>? OrderByDescending {get;}
+        Expression<Func<T,object>>? OrderByDescending {get;} 
+
+
+        List<string> IncludeStrings {get;}
 
         bool IsDistinct {get;}
 

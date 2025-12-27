@@ -9,19 +9,19 @@ namespace API.Controllers
         
     [ApiController]
     [Route("api/[controller]")]
-    public class BrandsController(IGenericRepository<Brand> repository) : ControllerBase
+    public class BrandsController(IUnitOfWork unit) : ControllerBase
     {
       
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Brand>>> GetBrands()
         {
-            return Ok(await repository.ListAllAsync());
+            return Ok(await unit.Repository<Brand>().ListAllAsync());
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Brand>> GetBrandById(int id)
         {
-            var brand = await repository.GetByIdAsync(id);
+            var brand = await unit.Repository<Brand>().GetByIdAsync(id);
 
             if(brand == null) return NotFound();
 
@@ -31,9 +31,9 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Brand>> CreateBrand(Brand brand)
         {
-            repository.Add(brand);
+            unit.Repository<Brand>().Add(brand);
             
-            if(await repository.SaveAllAsync())
+            if(await unit.Complete())
             {
                 return CreatedAtAction("GetBrandById",new{id = brand.Id},brand);
             }
@@ -48,9 +48,9 @@ namespace API.Controllers
             if(brand.Id != id || !BrandExists(id))
                 return BadRequest("Cannot update brand");
             
-            repository.Update(brand);
+            unit.Repository<Brand>().Update(brand);
             
-            if(await repository.SaveAllAsync())
+            if(await unit.Complete())
             {
                 return NoContent();
             }
@@ -61,13 +61,13 @@ namespace API.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteBrand(int id)
         {
-            var brand = await repository.GetByIdAsync(id);
+            var brand = await unit.Repository<Brand>().GetByIdAsync(id);
 
             if(brand == null) return NotFound();
 
-            repository.Remove(brand);
+            unit.Repository<Brand>().Remove(brand);
 
-            if(await repository.SaveAllAsync())
+            if(await unit.Complete())
             {
                 return NoContent();
             }
@@ -80,7 +80,7 @@ namespace API.Controllers
 
         private bool BrandExists(int id)
         {
-            return repository.Exists(id);
+            return unit.Repository<Brand>().Exists(id);
         }
     }
 
