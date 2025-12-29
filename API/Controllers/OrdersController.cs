@@ -63,7 +63,15 @@ namespace API.Controllers
                 ShippingAddress = orderDto.ShippingAddress,
                 Subtotal =  items.Sum(x => x.Price * x.Quantity),
                 PaymentIntentId = cart.PaymentIntentId,
-                BuyerEmail = email
+                BuyerEmail = email,
+                PaymentSummary = new PaymentSummary
+                {
+                    Last4 = orderDto.PaymentSummary.Last4,
+                    Brand = orderDto.PaymentSummary.Brand,
+                    ExpMonth = orderDto.PaymentSummary.ExpMonth,
+                    ExpYear = orderDto.PaymentSummary.ExpYear
+                }
+                
             };
 
             unit.Repository<Order>().Add(order);

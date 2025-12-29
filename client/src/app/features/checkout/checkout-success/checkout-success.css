@@ -106,3 +106,35 @@
 .order-button-outline:active {
   transform: translateY(0);
 }
+.loading-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--spacing-md);
+  text-align: center;
+  color: rgba(224, 224, 224, 0.8);
+}
+.jumping-logo {
+  width: 120px;     
+  height: auto;
+  animation: jump 0.6s infinite alternate;
+}
+
+@keyframes jump {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.loading-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.loading-subtext {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(224, 224, 224, 0.6);
+}

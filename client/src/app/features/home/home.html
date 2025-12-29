@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="homepage-container">
+  <div class="slider-card">
+    <img [src]="currentImage" alt="slider" class="slider-image active">
+
+    <div class="slider-overlay">
+      <h1 class="slider-title neon-flicker">
+        Power Up Your Gaming
+      </h1>
+      <p class="slider-subtitle">
+        Discover the latest gear, accessories, and games to level up your setup
+      </p>
+      <button
+        class="slider-button neon-button"
+        routerLink="/shop"
+      >
+        Shop Now
+      </button>
+      <div class="neon-line top"></div>
+      <div class="neon-line bottom"></div>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <div class="feature-card neon-card">
+      <h2>Top Rated Gear</h2>
+      <p>High-performance keyboards, mice, and accessories for serious gamers.</p>
+    </div>
+    <div class="feature-card neon-card">
+      <h2>Exclusive Games</h2>
+      <p>Get access to trending and exclusive titles at unbeatable prices.</p>
+    </div>
+    <div class="feature-card neon-card">
+      <h2>Fast Shipping</h2>
+      <p>Quick delivery right to your door so you can start playing sooner.</p>
+    </div>
+  </div>
+</div>

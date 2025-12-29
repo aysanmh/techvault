@@ -40,9 +40,9 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "ssl": false,
-            "poll": 1000,
-            "liveReload": true
+            "ssl": true,
+             "sslCert": "ssl/localhost.pem",
+             "sslKey": "ssl/localhost-key.pem"
           },
           "configurations": {
             "production": { "buildTarget": "client:build:production" },

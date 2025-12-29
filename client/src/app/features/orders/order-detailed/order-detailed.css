@@ -1,0 +1,122 @@
+.order-details-card {
+  max-width: 64rem;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: var(--color-bg-alt);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  color: var(--color-text);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-accent-cyan);
+}
+
+.return-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-accent-cyan);
+  color: var(--color-bg);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.return-button:hover {
+  background-color: var(--color-accent-pink);
+}
+
+.details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.billing-delivery,
+.order-info {
+  flex: 1 1 300px;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+dl dt {
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+dl dd {
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.items-table {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.items-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.items-table th,
+.items-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.items-table thead {
+  background-color: rgba(255, 255, 255, 0.05);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.items-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item-flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-flex img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.summary-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.summary-card dl {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.summary-card dl.total {
+  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.5rem;
+}

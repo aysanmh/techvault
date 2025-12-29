@@ -5,7 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @include mat.core();
+
 
 :root {
   --color-bg: #12131A;

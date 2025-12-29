@@ -1,0 +1,75 @@
+<mat-card class="order-details-card" *ngIf="order">
+  <div class="header">
+    <h2>Order Summary #{{ order.id }}</h2>
+    <button routerLink="/orders" class="return-button">Return to Orders</button>
+  </div>
+
+  <div class="details-container">
+    <div class="billing-delivery">
+      <h4>Billing & Delivery</h4>
+      <dl>
+        <dt>Shipping Address</dt>
+        <dd>{{ order.shippingAddress | address }}</dd>
+      </dl>
+      <dl>
+        <dt>Payment Info</dt>
+        <dd>{{ order.paymentSummary | paymentCard }}</dd>
+      </dl>
+    </div>
+
+    <div class="order-info">
+      <h4>Order Details</h4>
+      <dl>
+        <dt>Email</dt>
+        <dd>{{ order.buyerEmail }}</dd>
+      </dl>
+      <dl>
+        <dt>Status</dt>
+        <dd>{{ order.status }}</dd>
+      </dl>
+      <dl>
+        <dt>Order Date</dt>
+        <dd>{{ order.orderDate | date : 'medium' }}</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="items-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of order.orderItems">
+          <td>
+            <div class="item-flex">
+              <img [src]="item.imageUrl" alt="device image" />
+              <span>{{ item.deviceName }}</span>
+            </div>
+          </td>
+          <td>x{{ item.quantity }}</td>
+          <td>{{ item.price | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-card">
+    <dl>
+      <dt>Subtotal</dt>
+      <dd>{{ order.subtotal | currency }}</dd>
+    </dl>
+    <dl>
+      <dt>Delivery Fee</dt>
+      <dd>{{ order.shippingPrice | currency }}</dd>
+    </dl>
+    <dl class="total">
+      <dt>Total</dt>
+      <dd>{{ order.total | currency }}</dd>
+    </dl>
+  </div>
+</mat-card>

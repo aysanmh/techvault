@@ -9,10 +9,12 @@ namespace Infrastructure.Services
     ICartService cartService, 
     IUnitOfWork unit) : IPaymentService
     {
+        
         public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
         {
-            StripeConfiguration.ApiKey = configuration["StripeSettings:SecretKey"];
 
+
+            StripeConfiguration.ApiKey = configuration["StripeSettings:SecretKey"];
             var cart = await cartService.GetCartAsync(cartId);
 
             if(cart == null) return null;
@@ -59,9 +61,14 @@ namespace Infrastructure.Services
                 cart.PaymentIntentId = intent.Id;
 
                 cart.ClientSecret = intent.ClientSecret;
+
+                await cartService.SetCartAsync(cart); 
             }
             else
             {
+                var existingIntent = await service.GetAsync(cart.PaymentIntentId);
+                if(existingIntent.Status != "succeeded")
+                {
                 var options =  new PaymentIntentUpdateOptions
                 {
                 Amount = (long)cart.Items.Sum(x => x.Quantity * (x.Price * 100)) 
@@ -70,6 +77,16 @@ namespace Infrastructure.Services
                 };
 
                 intent = await service.UpdateAsync(cart.PaymentIntentId,options);
+                cart.ClientSecret = intent.ClientSecret;
+                }
+                else
+                {
+                    intent = existingIntent;
+                    if (string.IsNullOrEmpty(cart.ClientSecret))
+                    {
+                        cart.ClientSecret = intent.ClientSecret;
+                    }
+                }
             }
 
             await cartService.SetCartAsync(cart);

@@ -1,0 +1,49 @@
+.order-list-container {
+  max-width: 72rem;
+  margin: 4rem auto;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.order-list-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent-cyan);
+}
+
+.order-table-card {
+  background-color: var(--color-bg-alt);
+  border-radius: 1rem;
+  overflow-x: auto;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.order-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table-card th,
+.order-table-card td {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  color: var(--color-text);
+}
+
+.order-table-card thead {
+  background-color: rgba(255, 255, 255, 0.05);
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.order-table-card tbody tr {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.order-table-card tbody tr:hover {
+  background-color: rgba(0, 255, 255, 0.05);
+}

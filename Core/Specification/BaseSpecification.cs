@@ -30,7 +30,7 @@ namespace Core.Specification
 
         public bool IsPagingEnabled {get; private set;}
 
-        public List<string> IncludeStrings {get;}
+        public List<string> IncludeStrings {get;} = new();
 
         public IQueryable<T> ApplyCriteria(IQueryable<T> query)
         {

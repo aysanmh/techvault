@@ -71,11 +71,14 @@
 .continue-btn {
   padding: var(--spacing-xs) var(--spacing-sm);
   margin-bottom: var(--spacing-xs);
-  background-color: var(--color-accent-cyan);
-  color: var(--color-bg);
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+}
+
+.checkout-btn {
+  background-color: var(--color-accent-cyan);
+  color: var(--color-bg);
 }
 
 .continue-btn {
@@ -99,10 +102,34 @@
 }
 
 .voucher-label {
-  margin-bottom: var(--spacing-xs);
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text);
+}
+
+/* Angular Material form field adjustments */
+mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--color-text);
+}
+
+.mat-form-field-label {
+  color: var(--color-text);
+}
+
+.mat-input-element {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border-radius: 0.25rem;
+  padding: 6px 8px;
+}
+
+.mat-input-element:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-accent-pink);
 }
 
 .voucher-apply-btn {
@@ -113,21 +140,4 @@
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-}
-.voucher-form input {
-  width: 100%;
-  padding: 6px 8px; 
-  margin-bottom: 8px;
-  border: 1px solid #555; 
-  border-radius: 0.25rem;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-size: 0.95rem;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.voucher-form input:focus {
-  border-color: var(--color-accent-pink);
-  box-shadow: 0 0 0 1px var(--color-accent-pink);
 }

@@ -10,6 +10,6 @@ export type Address = {
   city: string;
   state: string;
   country: string;
-  postalCard: string;
+  postalCode: string;
   
 };

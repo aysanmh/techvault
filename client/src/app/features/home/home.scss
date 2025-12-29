@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+.homepage-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.slider-card {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  height: 600px;
+  margin-top: 5rem;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.7), #000000);
+}
+
+.slider-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fade 1s forwards;
+}
+
+.slider-image.active {
+  opacity: 1;
+}
+
+.slider-overlay {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.slider-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #d0e6e2;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.slider-subtitle {
+  font-size: 1.25rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.slider-button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(143, 225, 211, 0.4), rgba(240, 143, 176, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 5px 15px rgba(143, 225, 211, 0.15), 0 0 10px rgba(240, 143, 176, 0.15);
+  transition: all 0.3s ease;
+}
+
+.slider-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px #8fe1d3, 0 0 18px #f08fb0;
+}
+
+.neon-line {
+  position: absolute;
+  height: 2px;
+  width: 80%;
+  background: linear-gradient(90deg, #8fe1d3, #f08fb0);
+}
+
+.neon-line.top {
+  top: 20px;
+  left: 10%;
+}
+.neon-line.bottom {
+  bottom: 20px;
+  left: 10%;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.features-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  gap: 1.5rem;
+}
+
+.feature-card {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.feature-card h2 {
+  font-size: 1.75rem;
+  color: #c8dada;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #d4d4d4;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}

@@ -35,8 +35,10 @@ export class StripeService {
   async initializeElements() {
     if (this.elements) return this.elements;
 
+    const cart = await firstValueFrom(this.createOrUpdatePaymentIntent());
+    if (!cart?.clientSecret) throw new Error('clientSecret missing');
+
     const stripe = await this.getStripeInstance();
-    const cart = this.cartService.cart();
 
     if (!stripe || !cart?.clientSecret) {
       throw new Error('Stripe not initialized');
@@ -76,7 +78,7 @@ export class StripeService {
           city: user.address.city,
           state: user.address.state,
           country: user.address.country,
-          postal_code: user.address.postalCard,
+          postal_code: user.address.postalCode,
         };
       }
 
