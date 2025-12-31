@@ -5,7 +5,7 @@
 }
 
 .device-detail-container {
-  max-width: 1280px; /* max-w-screen-2xl */
+  max-width: 1280px;
   padding-left: var(--spacing-lg);
   padding-right: var(--spacing-lg);
   margin-left: auto;
@@ -16,8 +16,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-2xl);
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .device-detail-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -26,55 +28,91 @@
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
 
-  .device-image {
-    width: 100%;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    object-fit: contain; /* ensures the entire image fits nicely */
-  }
+.device-image-container .device-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
 }
 
 .device-info {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+}
 
-  .device-model {
-    font-size: 1.875rem; 
-    font-weight: 600; 
-    color: var(--color-accent-pink);
-  }
+.device-info .device-model {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: var(--color-accent-pink);
+}
 
-  .device-price {
-    font-size: 1.875rem; 
-    font-weight: 800; 
-    color: var(--color-accent-cyan);
-  }
+.device-info .device-price {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--color-accent-cyan);
+}
 
-  .device-add-btn {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
-    width: fit-content;
-    background-color: var(--color-bg-alt);
-    color: var(--color-accent-cyan);
-    border: 1px solid #333;
-    border-radius: 0.5rem;
-    transition: all 0.2s;
+.device-info .device-add-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  width: fit-content;
+  background-color: var(--color-bg-alt);
+  color: var(--color-accent-cyan);
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
 
-    mat-icon {
-      font-size: 1.25rem;
-    }
+.device-info .device-add-btn mat-icon {
+  font-size: 1.25rem;
+}
 
-    &:hover {
-      box-shadow: 0 0 10px var(--color-accent-cyan)55, 0 0 15px var(--color-accent-pink)55;
-    }
-  }
+.device-info .device-add-btn:hover {
+  box-shadow: 0 0 10px var(--color-accent-cyan)55, 0 0 15px var(--color-accent-pink)55;
+}
 
-  .device-description {
-    margin-top: var(--spacing-lg);
-    color: #c0c0c0;
-  }
+.device-info .device-description {
+  margin-top: var(--spacing-lg);
+  color: #c0c0c0;
+}
+
+.device-page-fillers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+  justify-content: center;
+}
+
+.filler-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: default;
+  transition: all 0.3s;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.filler-bar.neon-cyan {
+  color: var(--color-accent-cyan);
+  box-shadow: 0 0 6px var(--color-accent-cyan), 0 0 12px var(--color-accent-cyan)55;
+}
+
+.filler-bar.neon-pink {
+  color: var(--color-accent-pink);
+  box-shadow: 0 0 6px var(--color-accent-pink), 0 0 12px var(--color-accent-pink)55;
+}
+
+.filler-bar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #fff8, 0 0 20px #fff3;
 }

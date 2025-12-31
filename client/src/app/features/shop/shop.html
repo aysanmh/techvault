@@ -1,4 +1,4 @@
-<div *ngIf="devices()" class="flex flex-col gap-[var(--spacing-2xl)] p-[var(--spacing-lg)]">
+<div *ngIf="devices()" class="device-container">
   <div class="flex flex-col md:flex-row justify-between items-center gap-[var(--spacing-lg)]">
     <div class="flex flex-wrap items-center gap-4 w-full md:w-auto">
       <mat-paginator
@@ -17,45 +17,28 @@
         placeholder="Search"
         [(ngModel)]="shopParams.search"
         name="search"
-        class="w-full px-[var(--spacing-lg)] py-[var(--spacing-sm)] rounded-md bg-[var(--color-bg-alt)] text-[var(--color-text)] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-cyan)]"
+        class="search-input"
       />
-      <button
-        mat-icon-button
-        type="submit"
-        class="text-[var(--color-accent-cyan)] hover:text-[var(--color-accent-pink)]"
-      >
+      <button mat-icon-button type="submit" class="search-button">
         <mat-icon>search</mat-icon>
       </button>
     </form>
 
     <div class="flex gap-3 flex-wrap">
-      <button
-        class="flex items-center gap-1 px-[var(--spacing-md)] py-[var(--spacing-sm)] bg-[var(--color-bg-alt)] text-[var(--color-text)] rounded-md hover:bg-[var(--color-bg)]"
-        (click)="openFiltersDialog()"
-      >
-        <mat-icon class="text-[var(--color-accent-cyan)]">filter_list</mat-icon>
+      <button (click)="openFiltersDialog()" class="filter-button">
+        <mat-icon>filter_list</mat-icon>
         Filters
       </button>
-      <button
-        class="flex items-center gap-1 px-[var(--spacing-md)] py-[var(--spacing-sm)] bg-[var(--color-bg-alt)] text-[var(--color-text)] rounded-md hover:bg-[var(--color-bg)]"
-        mat-stroked-button
-        [matMenuTriggerFor]="sortMenu"
-      >
-        <mat-icon class="text-[var(--color-accent-cyan)]">swap_vert</mat-icon>
+      <button mat-stroked-button [matMenuTriggerFor]="sortMenu" class="sort-button">
+        <mat-icon>swap_vert</mat-icon>
         Sort
       </button>
     </div>
   </div>
 
-  <div class="flex justify-center mt-[var(--spacing-xl)]">
-    <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-[var(--spacing-2xl)] w-full max-w-screen-2xl"
-    >
-      <app-device-item
-        *ngFor="let device of devices()?.data"
-        [device]="device"
-        class="h-full"
-      ></app-device-item>
+  <div class="device-grid-wrapper">
+    <div class="device-grid">
+      <app-device-item *ngFor="let device of devices()?.data" [device]="device"></app-device-item>
     </div>
   </div>
 

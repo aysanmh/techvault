@@ -5,11 +5,11 @@
     </a>
 
     <nav class="nav">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
-      >
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
       <a routerLink="/shop" routerLinkActive="active">Shop</a>
-      <a routerLink="/test-error" routerLinkActive="active">Errors</a>
+      <a routerLink="/orders" routerLinkActive="active">Orders</a>
+      <a *appIsAdmin routerLink="/admin" routerLinkActive="active">Admin</a>
+
     </nav>
 
     <div class="header-actions">
@@ -44,7 +44,7 @@
   ></mat-progress-bar>
 </header>
 
-<mat-menu #menu="matMenu" class="px-5">
+<mat-menu #menu="matMenu" xPosition="after" class="px-5">
   <button mat-menu-item class="px-3" routerLink="/cart">
     <mat-icon>shopping_cart</mat-icon>
     My cart

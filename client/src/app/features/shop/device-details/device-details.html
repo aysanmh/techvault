@@ -1,5 +1,6 @@
 <div *ngIf="device()" class="device-detail">
   <div class="device-detail-container">
+
     <div class="device-detail-grid">
       <div class="device-image-container">
         <img [src]="device()!.imageUrl" [alt]="device()!.model" class="device-image" />
@@ -18,5 +19,27 @@
         <p class="device-description">{{ device()!.description }}</p>
       </div>
     </div>
+
+    <div class="device-page-fillers">
+      <div class="filler-bar neon-cyan">
+        <mat-icon>gamepad</mat-icon> Razer
+      </div>
+      <div class="filler-bar neon-pink">
+        <mat-icon>keyboard</mat-icon> Corsair
+      </div>
+      <div class="filler-bar neon-cyan">
+        <mat-icon>mouse</mat-icon> Logitech
+      </div>
+      <div class="filler-bar neon-pink">
+        <mat-icon>headset</mat-icon> SteelSeries
+      </div>
+      <div class="filler-bar neon-cyan">
+        <mat-icon>gamepad</mat-icon> HyperX
+      </div>
+      <div class="filler-bar neon-pink">
+        <mat-icon>keyboard</mat-icon> ASUS ROG
+      </div>
+    </div>
+
   </div>
 </div>

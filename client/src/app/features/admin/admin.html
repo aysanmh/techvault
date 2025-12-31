@@ -1,0 +1,61 @@
+<div class="admin-container">
+  <mat-tab-group class="admin-tabs">
+    <mat-tab label="Orders">
+      <div class="orders-header">
+        <h2 class="orders-title">Customer Orders</h2>
+
+        <mat-form-field class="orders-filter">
+          <mat-label>Status</mat-label>
+          <mat-select (selectionChange)="onFilterSelect($event)">
+            @for (status of statusOptions; track $index) {
+              <mat-option [value]="status">{{ status }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="orders-panel">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Buyer</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of dataSource.data">
+              <td>{{ order.id }}</td>
+              <td>{{ order.buyerEmail }}</td>
+              <td>{{ order.orderDate | date:'short' }}</td>
+              <td>{{ order.total | currency }}</td>
+              <td class="status-cell">{{ order.status }}</td>
+              <td class="action-buttons">
+                <button mat-icon-button matTooltip="View" routerLink="/orders/{{ order.id }}">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Refund" [disabled]="order.status === 'Refunded'" (click)="openConfirmDialog(order.id)">
+                  <mat-icon>undo</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          [length]="totalItems"
+          [pageSize]="orderParams.pageSize"
+          (page)="onPageChange($event)"
+          showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Catalog">Catalog placeholder</mat-tab>
+    <mat-tab label="Customer Service">Customer service</mat-tab>
+  </mat-tab-group>
+</div>

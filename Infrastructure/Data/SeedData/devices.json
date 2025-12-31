@@ -4,207 +4,177 @@
     "BrandId": 1,
     "Model": "Lenovo ThinkPad X1 Carbon",
     "ImageUrl": "/images/laptops/lenovo/1.png",
-    "Description": "Lightweight and powerful business laptop.",
-    "Price": 1200.00
+    "Description": "The Lenovo ThinkPad X1 Carbon is a lightweight and powerful business laptop, designed to provide excellent performance and portability for professionals on the go.",
+    "Price": 1200.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 1,
     "Model": "Lenovo Legion 5",
     "ImageUrl": "/images/laptops/lenovo/2.png",
-    "Description": "High-performance gaming laptop with AMD CPU.",
-    "Price": 1400.00
+    "Description": "The Lenovo Legion 5 is a high-performance gaming laptop with an AMD CPU, delivering smooth gameplay and powerful graphics performance for gamers.",
+    "Price": 1400.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 2,
     "Model": "ASUS ROG Strix G15",
     "ImageUrl": "/images/laptops/asus/1.png",
-    "Description": "Gaming laptop with NVIDIA RTX GPU.",
-    "Price": 1500.00
+    "Description": "ASUS ROG Strix G15 is a gaming laptop equipped with NVIDIA RTX GPU, providing high-end gaming capabilities and advanced graphics processing.",
+    "Price": 1500.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 2,
     "Model": "ASUS TUF Dash F15",
     "ImageUrl": "/images/laptops/asus/2.png",
-    "Description": "Durable gaming laptop with high refresh display.",
-    "Price": 1300.00
+    "Description": "The ASUS TUF Dash F15 is a durable gaming laptop featuring a high refresh rate display and reliable performance for gaming enthusiasts.",
+    "Price": 1300.0
   },
-  {
-    "DeviceGroupId": 1,
-    "BrandId": 3,
-    "Model": "MSI GE76 Raider",
-    "ImageUrl": "/images/laptops/msi/1.png",
-    "Description": "Top-tier gaming laptop with a powerful GPU and CPU.",
-    "Price": 1800.00
-  },
+
   {
     "DeviceGroupId": 1,
     "BrandId": 4,
     "Model": "HP Spectre x360",
     "ImageUrl": "/images/laptops/hp/1.png",
-    "Description": "Premium convertible laptop with 4K display.",
-    "Price": 1400.00
+    "Description": "HP Spectre x360 is a premium convertible laptop with a 4K display, combining elegance with high-quality performance for both work and entertainment.",
+    "Price": 1400.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 4,
     "Model": "HP Omen 16",
     "ImageUrl": "/images/laptops/hp/2.png",
-    "Description": "Gaming laptop with fast refresh rate display.",
-    "Price": 1600.00
+    "Description": "HP Omen 16 is a gaming laptop with fast refresh rate display, built to handle intensive games and provide smooth visuals.",
+    "Price": 1600.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 5,
     "Model": "Dell XPS 13",
     "ImageUrl": "/images/laptops/dell/1.png",
-    "Description": "Compact, ultra-portable laptop with excellent battery life.",
-    "Price": 1200.00
+    "Description": "Dell XPS 13 is a compact, ultra-portable laptop with excellent battery life, perfect for professionals who need mobility and performance.",
+    "Price": 1200.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 5,
     "Model": "Dell G15",
     "ImageUrl": "/images/laptops/dell/2.png",
-    "Description": "Affordable gaming laptop with NVIDIA GPU.",
-    "Price": 1300.00
+    "Description": "Dell G15 is an affordable gaming laptop with NVIDIA GPU, providing strong gaming performance at a budget-friendly price.",
+    "Price": 1300.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 6,
     "Model": "Acer Swift 3",
     "ImageUrl": "/images/laptops/acer/1.png",
-    "Description": "Affordable ultrabook with solid performance.",
-    "Price": 800.00
+    "Description": "Acer Swift 3 is an affordable ultrabook with solid performance, suitable for everyday tasks and light productivity work.",
+    "Price": 800.0
   },
   {
     "DeviceGroupId": 1,
     "BrandId": 6,
     "Model": "Acer Predator Helios 300",
     "ImageUrl": "/images/laptops/acer/2.png",
-    "Description": "Gaming laptop with high refresh display.",
-    "Price": 1500.00
-  },
-  {
-    "DeviceGroupId": 1,
-    "BrandId": 7,
-    "Model": "Razer Blade 15",
-    "ImageUrl": "/images/laptops/razer/1.png",
-    "Description": "Slim and powerful gaming laptop with OLED display.",
-    "Price": 2000.00
+    "Description": "Acer Predator Helios 300 is a gaming laptop featuring a high refresh rate display and strong hardware to deliver smooth gameplay.",
+    "Price": 1500.0
   },
   {
     "DeviceGroupId": 2,
     "BrandId": 9,
     "Model": "Logitech G Pro X Keyboard",
     "ImageUrl": "/images/keyboards/logitech/1.png",
-    "Description": "Mechanical keyboard designed for esports.",
-    "Price": 120.00
+    "Description": "The Logitech G Pro X Keyboard is a mechanical keyboard designed for esports, offering precise key response and durable build quality.",
+    "Price": 120.0
   },
   {
     "DeviceGroupId": 2,
     "BrandId": 7,
     "Model": "Razer BlackWidow V3",
     "ImageUrl": "/images/keyboards/razer/1.png",
-    "Description": "RGB mechanical keyboard with green switches.",
-    "Price": 150.00
+    "Description": "Razer BlackWidow V3 is an RGB mechanical keyboard with green switches, providing satisfying tactile feedback and customizable lighting.",
+    "Price": 150.0
   },
   {
     "DeviceGroupId": 2,
     "BrandId": 10,
     "Model": "Corsair K70 RGB",
     "ImageUrl": "/images/keyboards/corsair/1.png",
-    "Description": "Durable mechanical keyboard with customizable RGB lighting.",
-    "Price": 160.00
+    "Description": "Corsair K70 RGB is a durable mechanical keyboard with customizable RGB lighting and responsive keys for gaming and productivity.",
+    "Price": 160.0
   },
   {
     "DeviceGroupId": 3,
     "BrandId": 9,
     "Model": "Logitech MX Master 3",
     "ImageUrl": "/images/mouses/logitech/1.png",
-    "Description": "Wireless mouse with customizable buttons and ergonomic design.",
-    "Price": 100.00
+    "Description": "Logitech MX Master 3 is a wireless mouse with customizable buttons and ergonomic design, offering comfort and efficiency for daily use.",
+    "Price": 100.0
   },
   {
     "DeviceGroupId": 3,
     "BrandId": 7,
     "Model": "Razer DeathAdder V2",
     "ImageUrl": "/images/mouses/razer/1.png",
-    "Description": "Ergonomic gaming mouse with optical sensor.",
-    "Price": 80.00
+    "Description": "Razer DeathAdder V2 is an ergonomic gaming mouse with optical sensor, providing precision and comfort for long gaming sessions.",
+    "Price": 80.0
   },
   {
     "DeviceGroupId": 3,
     "BrandId": 10,
     "Model": "Corsair Sabre RGB Pro",
     "ImageUrl": "/images/mouses/corsair/1.png",
-    "Description": "High-performance gaming mouse with customizable buttons.",
-    "Price": 70.00
+    "Description": "Corsair Sabre RGB Pro is a high-performance gaming mouse with customizable buttons, ideal for competitive gaming.",
+    "Price": 70.0
   },
   {
     "DeviceGroupId": 4,
     "BrandId": 2,
     "Model": "ASUS ROG Swift PG32UCDM",
     "ImageUrl": "/images/monitors/asus/1.png",
-    "Description": "4K gaming monitor with high refresh rate.",
-    "Price": 900.00
+    "Description": "ASUS ROG Swift PG32UCDM is a 4K gaming monitor with a high refresh rate, delivering smooth visuals and vivid colors for gamers.",
+    "Price": 900.0
   },
   {
     "DeviceGroupId": 4,
     "BrandId": 3,
     "Model": "MSI MPG321URX",
-    "ImageUrl": "/images/monitors/msi/1.png",
-    "Description": "QD-OLED monitor with vibrant colors and fast response.",
-    "Price": 1100.00
+    "ImageUrl": "/images/monitors/msi/2.png",
+    "Description": "MSI MPG321URX is a QD-OLED monitor with vibrant colors and fast response, perfect for both gaming and creative work.",
+    "Price": 1100.0
   },
   {
     "DeviceGroupId": 4,
     "BrandId": 5,
     "Model": "Dell UltraSharp U2720Q",
     "ImageUrl": "/images/monitors/dell/1.png",
-    "Description": "4K monitor with excellent color accuracy.",
-    "Price": 400.00
+    "Description": "Dell UltraSharp U2720Q is a 4K monitor with excellent color accuracy, ideal for designers and content creators.",
+    "Price": 400.0
   },
   {
     "DeviceGroupId": 4,
     "BrandId": 8,
     "Model": "Samsung Odyssey G9",
     "ImageUrl": "/images/monitors/samsung/1.png",
-    "Description": "Super ultrawide 49-inch curved gaming monitor.",
-    "Price": 1500.00
+    "Description": "Samsung Odyssey G9 is a super ultrawide 49-inch curved gaming monitor, offering immersive visuals and gaming performance.",
+    "Price": 1500.0
   },
-  {
-    "DeviceGroupId": 5,
-    "BrandId": 6,
-    "Model": "Acer Predator Galea 500",
-    "ImageUrl": "/images/headsets/acer/1.png",
-    "Description": "Gaming headset with surround sound and microphone.",
-    "Price": 120.00
-  },
-  {
-    "DeviceGroupId": 5,
-    "BrandId": 9,
-    "Model": "Logitech G Pro X Headset",
-    "ImageUrl": "/images/headsets/logitech/1.png",
-    "Description": "Esports-grade headset with Blue VO!CE microphone technology.",
-    "Price": 130.00
-  },
+
   {
     "DeviceGroupId": 5,
     "BrandId": 10,
     "Model": "Corsair HS80",
     "ImageUrl": "/images/headsets/corsair/1.png",
-    "Description": "High-quality gaming headset with 7.1 surround sound.",
-    "Price": 150.00
+    "Description": "Corsair HS80 is a high-quality gaming headset with 7.1 surround sound, providing immersive audio for gaming and media.",
+    "Price": 150.0
   },
   {
     "DeviceGroupId": 5,
     "BrandId": 11,
     "Model": "SteelSeries Arctis Nova Pro Wireless",
     "ImageUrl": "/images/headsets/steelseries/1.png",
-    "Description": "Premium wireless gaming headset with excellent audio.",
-    "Price": 250.00
+    "Description": "SteelSeries Arctis Nova Pro Wireless is a premium wireless gaming headset with excellent audio quality and advanced features.",
+    "Price": 250.0
   }
 ]

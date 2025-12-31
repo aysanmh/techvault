@@ -5,96 +5,117 @@ using Stripe;
 
 namespace Infrastructure.Services
 {
-    public class PaymentService(IConfiguration configuration,
-    ICartService cartService, 
-    IUnitOfWork unit) : IPaymentService
+    public class PaymentService : IPaymentService
     {
+         private readonly ICartService cartService;
+         private readonly IUnitOfWork unit;
+        public PaymentService(IConfiguration configuration, ICartService cartService, 
+                IUnitOfWork unit)
+        {
+            this.cartService = cartService;
+            
+            this.unit = unit;
+
+            StripeConfiguration.ApiKey = configuration["StripeSettings:SecretKey"];
+
+        }
         
         public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
         {
+            var cart = await cartService.GetCartAsync(cartId)
+                ?? throw new Exception("Cart unavailable");
+            
+            var shippingPrice = await GetShippingPriceAsync(cart) ?? 0 ;
+
+            await ValidateCartItemsInCartAsync(cart);
+
+            var subtotal = CalculateSubtotal(cart);
+
+            var total = subtotal + shippingPrice;
+
+            await CreateUpdatePaymentIntentAsync(cart,total);
+
+            await cartService.SetCartAsync(cart);
+
+            return cart;
+
+        }
 
 
-            StripeConfiguration.ApiKey = configuration["StripeSettings:SecretKey"];
-            var cart = await cartService.GetCartAsync(cartId);
 
-            if(cart == null) return null;
-
-            var shippingPrice = 0m;
-
-            if (cart.DeliveryMethodId.HasValue)
+        public async Task<string> RefundPayment(string paymentIntentId)
+        {
+            var refundOptions = new RefundCreateOptions
             {
-                var deliveryMethod  = await unit.Repository<DeliveryMethod>().GetByIdAsync((int)cart.DeliveryMethodId);
-                
-                if(deliveryMethod == null) return null;
+                PaymentIntent = paymentIntentId
+            };
+            var refundService = new RefundService();
+            var result = await refundService.CreateAsync(refundOptions);
+            return result.Status;
+        }
 
-                shippingPrice = deliveryMethod.Price;
-            }
+        private long CalculateSubtotal(ShoppingCart cart)
+        {
+            var itemTotal = cart.Items.Sum(x => x.Quantity * x.Price * 100);
+            return (long)itemTotal;
+        }
 
-            foreach (var item in cart.Items)
-            {
-                var deviceItem =  await unit.Repository<Device>().GetByIdAsync(item.DeviceId);
 
-                if(deviceItem == null) return null;
-                
-                if(item.Price != deviceItem.Price)
-                {
-                    item.Price = deviceItem.Price;
-                }
-            }
-
-            var service =  new PaymentIntentService();
-
-            PaymentIntent? intent = null;
+        private async Task CreateUpdatePaymentIntentAsync(ShoppingCart cart, long total)
+        {
+            var service = new PaymentIntentService();
 
             if (string.IsNullOrEmpty(cart.PaymentIntentId))
             {
                 var options = new PaymentIntentCreateOptions
                 {
-                  Amount = (long)cart.Items.Sum(x => x.Quantity * (x.Price * 100)) 
-                  + (long)shippingPrice * 100,  
+                  Amount = total,
                   Currency = "usd",
-                  PaymentMethodTypes = ["card"]
+                  PaymentMethodTypes = ["card"]  
                 };
-
-                intent = await service.CreateAsync(options);
-
+                var intent =  await service.CreateAsync(options);
                 cart.PaymentIntentId = intent.Id;
-
                 cart.ClientSecret = intent.ClientSecret;
-
-                await cartService.SetCartAsync(cart); 
             }
             else
             {
-                var existingIntent = await service.GetAsync(cart.PaymentIntentId);
-                if(existingIntent.Status != "succeeded")
+                var options = new PaymentIntentUpdateOptions
                 {
-                var options =  new PaymentIntentUpdateOptions
-                {
-                Amount = (long)cart.Items.Sum(x => x.Quantity * (x.Price * 100)) 
-                  + (long)shippingPrice * 100
-                    
+                  Amount = total  
                 };
+                await service.UpdateAsync(cart.PaymentIntentId,options);
+            }
+        }
 
-                intent = await service.UpdateAsync(cart.PaymentIntentId,options);
-                cart.ClientSecret = intent.ClientSecret;
-                }
-                else
+        private async Task ValidateCartItemsInCartAsync(ShoppingCart cart)
+        {
+            foreach (var item in cart.Items)
+            {
+                var deviceItem = await unit.Repository<Device>()
+                    .GetByIdAsync(item.DeviceId) ?? throw new Exception("Problem getting device.");
+
+                if(item.Price != deviceItem.Price)
                 {
-                    intent = existingIntent;
-                    if (string.IsNullOrEmpty(cart.ClientSecret))
-                    {
-                        cart.ClientSecret = intent.ClientSecret;
-                    }
+                    item.Price = deviceItem.Price;
                 }
+                
+            }
+        }
+        private async Task<long?> GetShippingPriceAsync(ShoppingCart cart)
+        {
+            if (cart.DeliveryMethodId.HasValue)
+            {
+                var deliveryMethod = await unit.Repository<DeliveryMethod>()
+                    .GetByIdAsync((int)cart.DeliveryMethodId) ??
+                        throw new Exception("Problem with delivery method.");
+                return (long)deliveryMethod.Price * 100;
             }
 
-            await cartService.SetCartAsync(cart);
-        
-
-            return cart;
-
+            return null;
         }
+
+
+
     }
 
 }

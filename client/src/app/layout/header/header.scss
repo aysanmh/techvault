@@ -5,82 +5,83 @@
   z-index: 50;
   background-color: var(--color-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1536px;
-    margin: 0 auto;
-    padding: var(--spacing-md) var(--spacing-lg);
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-2xl);
+}
+
+.logo {
+  max-height: 5rem;
+  filter: brightness(1);
+  animation: neon-fade 2s infinite alternate;
+}
+
+@keyframes neon-fade {
+  0% {
+    filter: brightness(0.8);
+    text-shadow: 0 0 5px #ff4ec3, 0 0 10px #00ffff;
   }
-
-  .logo {
-    max-height: 5rem;
-    filter: brightness(1);
-    animation: neon-fade 2s infinite alternate;
+  50% {
+    filter: brightness(1.2);
+    text-shadow: 0 0 10px #ff4ec3, 0 0 20px #00ffff;
   }
-
-  @keyframes neon-fade {
-    0% {
-      filter: brightness(0.8);
-      text-shadow: 0 0 5px #ff4ec3, 0 0 10px #00ffff;
-    }
-    50% {
-      filter: brightness(1.2);
-      text-shadow: 0 0 10px #ff4ec3, 0 0 20px #00ffff;
-    }
-    100% {
-      filter: brightness(0.9);
-      text-shadow: 0 0 5px #ff4ec3, 0 0 10px #00ffff;
-    }
+  100% {
+    filter: brightness(0.9);
+    text-shadow: 0 0 5px #ff4ec3, 0 0 10px #00ffff;
   }
+}
 
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-    text-transform: uppercase;
-    font-size: 1.125rem;
-    color: var(--color-text);
+.nav {
+  display: flex;
+  gap: 4rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
 
-    a.active {
-      color: var(--color-accent-cyan);
-    }
-  }
+.nav a.active {
+  color: var(--color-accent-cyan);
+}
 
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
-    .custom-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.custom-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .mat-badge-content {
-        width: 1.5rem;
-        height: 1.5rem;
-        font-size: 0.875rem;
-        line-height: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
+.custom-badge .mat-badge-content {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
 
-      .mat-icon {
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.5rem;
-      }
-    }
+.custom-badge .mat-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.75rem;
+}
 
-    button {
-      height: 2.5rem;
-      cursor: pointer;
-    }
-  }
+.header-actions button {
+  height: 3rem;
+  cursor: pointer;
+  padding: 0 1rem;
 }
 
 .progress-bar {
@@ -112,4 +113,3 @@
     background-position: 200% 0;
   }
 }
-

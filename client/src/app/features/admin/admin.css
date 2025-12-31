@@ -1,0 +1,149 @@
+.admin-container {
+margin-top: 6rem;
+max-width: 1280px;
+margin-left: auto;
+margin-right: auto;
+padding: 2rem;
+background-color: #1a1c2b;
+color: #e0e0e0;
+}
+
+.admin-tabs {
+background: transparent;
+}
+
+.orders-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.orders-title {
+font-family: 'Orbitron', sans-serif;
+font-size: 1.8rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+color: #00ffff;
+}
+
+.orders-filter {
+width: 18rem;
+}
+
+.orders-filter .mat-mdc-form-field-flex {
+background-color: #222539;
+border-radius: 0.75rem;
+}
+
+.orders-filter .mat-mdc-form-field-outline {
+color: rgba(255, 255, 255, 0.3);
+}
+
+.orders-filter .mat-mdc-select-value,
+.orders-filter .mat-mdc-select-arrow,
+.orders-filter .mat-mdc-form-field-label {
+color: #e0e0e0;
+}
+
+.orders-filter.mat-focused .mat-mdc-form-field-outline,
+.orders-filter.mat-focused .mat-mdc-form-field-label {
+color: #00ffff;
+}
+
+.orders-panel.white-panel {
+background-color: #1f2233;
+border-radius: 1rem;
+padding: 2rem;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.custom-table {
+width: 100%;
+border-collapse: collapse;
+border-radius: 0.75rem;
+color: #ffffff;
+font-family: 'Arial', sans-serif;
+}
+
+.custom-table th,
+.custom-table td {
+padding: 0.75rem 1rem;
+text-align: left;
+}
+
+.custom-table thead {
+background-color: rgba(0, 255, 255, 0.1);
+}
+
+.custom-table th {
+font-weight: 700;
+color: #ffffff;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.custom-table td {
+color: #ffffff;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-table tbody tr {
+transition: background-color 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+background-color: rgba(0, 255, 255, 0.08);
+}
+
+.status-cell {
+font-weight: 600;
+color: #00ffff;
+}
+
+.action-buttons {
+display: flex;
+gap: 0.5rem;
+}
+
+.action-buttons mat-icon {
+color: #00ffff;
+transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.action-buttons button:hover mat-icon {
+text-shadow: 0 0 6px #00ffff;
+}
+
+mat-paginator {
+margin-top: 2rem;
+background-color: #222539;
+color: #e0e0e0;
+border-radius: 0.5rem;
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+mat-paginator .mat-mdc-icon-button,
+mat-paginator .mat-mdc-paginator-range-label {
+color: #e0e0e0;
+}
+
+mat-paginator .mat-mdc-icon-button:hover {
+color: #00ffff;
+}
+
+.mat-mdc-select-panel {
+background-color: #1f2233;
+color: #e0e0e0;
+border-radius: 0.5rem;
+}
+
+.mat-mdc-select-panel .mat-mdc-option.mat-selected {
+background-color: rgba(0, 255, 255, 0.08);
+color: #00ffff;
+}
+
+.mat-mdc-select-panel .mat-mdc-option:hover {
+background-color: rgba(0, 255, 255, 0.06);
+}

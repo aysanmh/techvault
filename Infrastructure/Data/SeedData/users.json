@@ -1,0 +1,17 @@
+[
+ 
+  {
+    "UserName": "john.doe",
+    "Email": "john.doe@test.com",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Address": {
+      "Line1": "456 Elm St",
+      "Line2": null,
+      "City": "Gotham",
+      "State": "NY",
+      "PostalCode": "10001",
+      "Country": "USA"
+    }
+  }
+]

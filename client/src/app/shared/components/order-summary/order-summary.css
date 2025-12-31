@@ -86,28 +86,7 @@
   color: var(--color-bg);
 }
 
-.voucher-card {
-  padding: var(--spacing-sm);
-  margin-top: var(--spacing-sm);
-  border-radius: 0.5rem;
-  border: 1px solid #333;
-  background-color: var(--color-bg-alt);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
 
-.voucher-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
-
-.voucher-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text);
-}
-
-/* Angular Material form field adjustments */
 mat-form-field {
   width: 100%;
 }
@@ -132,12 +111,3 @@ mat-form-field {
   box-shadow: 0 0 0 1px var(--color-accent-pink);
 }
 
-.voucher-apply-btn {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  margin-top: var(--spacing-xs);
-  background-color: var(--color-accent-cyan);
-  color: var(--color-bg);
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}

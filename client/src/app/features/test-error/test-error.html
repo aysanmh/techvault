@@ -1,17 +1,13 @@
-<div class="mt-5 flex flex-wrap justify-center gap-4">
-  <button mat-stroked-button class="hover:shadow-[0_0_10px_#FF4EC355] transition-all duration-200" (click)="get500Error()">Test 500 error</button>
-  <button mat-stroked-button class="hover:shadow-[0_0_10px_#FF4EC355] transition-all duration-200" (click)="get404Error()">Test 404 error</button>
-  <button mat-stroked-button class="hover:shadow-[0_0_10px_#FF4EC355] transition-all duration-200" (click)="get400Error()">Test 400 error</button>
-  <button mat-stroked-button class="hover:shadow-[0_0_10px_#FF4EC355] transition-all duration-200" (click)="get401Error()">Test 401 error</button>
-  <button mat-stroked-button class="hover:shadow-[0_0_10px_#FF4EC355] transition-all duration-200" (click)="get400ValidationError()">Test Validation error</button>
+<div class="error-buttons-container">
+  <button mat-stroked-button (click)="get500Error()">Test 500 error</button>
+  <button mat-stroked-button (click)="get404Error()">Test 404 error</button>
+  <button mat-stroked-button (click)="get400Error()">Test 400 error</button>
+  <button mat-stroked-button (click)="get401Error()">Test 401 error</button>
+  <button mat-stroked-button (click)="get400ValidationError()">Test Validation error</button>
 </div>
 
-@if(validationErrors){
- <div class="mx-auto max-w-lg mt-5 bg-[#330000] p-4 rounded shadow-lg border border-[#FF4EC3]">
-  <ul class="space-y-2">
-      @for (error of validationErrors; track $index){
-        <li class="text-[#FF4EC3] font-semibold">{{error}}</li> 
-           }
-    </ul>
-  </div>
-}
+<div *ngIf="validationErrors" class="validation-errors-container">
+  <ul>
+    <li *ngFor="let error of validationErrors" class="validation-error">{{ error }}</li>
+  </ul>
+</div>

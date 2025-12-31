@@ -10,6 +10,7 @@ import { AccountService } from '../../core/services/AccountService';
 import { MatAnchor } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatDivider } from '@angular/material/divider';
+import { IsAdmin } from "../../shared/directives/is-admin";
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,8 @@ import { MatDivider } from '@angular/material/divider';
     MatMenu,
     MatDivider,
     MatMenuItem,
-  ],
+    IsAdmin
+],
   templateUrl: './header.html',
   styleUrls: ['./header.scss'],
 })

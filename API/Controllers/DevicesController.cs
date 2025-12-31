@@ -4,6 +4,7 @@ using API.RequestHelpers;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -79,7 +80,8 @@ public class DevicesController(IUnitOfWork unit) : BaseApiController
 
         return Ok(groups);
     }
-     
+
+    [Authorize(Roles ="Admin")] 
     [HttpPost]
     public async Task<ActionResult<DeviceDto>> CreateDevice(DeviceCreateDto dto)
     {
@@ -128,6 +130,7 @@ public class DevicesController(IUnitOfWork unit) : BaseApiController
 
 
 
+    [Authorize(Roles ="Admin")] 
     [HttpPut("{id:int}")]
     public async Task<ActionResult> UpdateDevice(int id, DeviceCreateDto dto)
     {
@@ -160,6 +163,7 @@ public class DevicesController(IUnitOfWork unit) : BaseApiController
     }
 
 
+    [Authorize(Roles ="Admin")] 
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> DeleteDevice(int id)
     {

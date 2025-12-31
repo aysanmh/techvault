@@ -8,6 +8,7 @@ namespace Core.Entities.OrderAggregate
 
         PaymentFailed,
 
-        PaymentMismatch
+        PaymentMismatch,
+        Refunded
     }
 }

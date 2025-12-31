@@ -1,30 +1,40 @@
 @if (device) {
   <mat-card
-    class="overflow-hidden rounded-lg shadow-lg hover:shadow-[0_0_15px_#00FFFF33,0_0_20px_#FF4EC333] transition-all duration-200 flex flex-col h-full cursor-pointer"
+    class="device-card"
     [routerLink]="['/shop', device.id]"
   >
-    <div class="h-60 w-full overflow-hidden rounded-t-lg flex items-center justify-center bg-[var(--color-bg-alt)]">
+    <div class="device-image-wrapper">
       <img
         [src]="device.imageUrl"
         [alt]="device.model"
-        class="max-w-full max-h-full object-contain"
+        class="device-image"
       />
+      <div class="device-image-overlay"></div>
     </div>
 
-    <mat-card-content class="mt-2 flex-1 flex flex-col justify-between">
-      <h2 class="text-sm font-semibold uppercase text-[var(--color-accent-pink)]">
-        {{ device.model }}
-      </h2>
+    <mat-card-content class="device-content">
+      <div class="device-info">
+        <h2 class="device-title">
+          {{ device.model }}
+        </h2>
 
-      <p class="font-bold text-[var(--color-accent-cyan)] mt-1">
-        {{ device.price | currency }}
-      </p>
+      
+
+        <div class="device-divider"></div>
+
+        <p class="device-price">
+          {{ device.price | currency }}
+        </p>
+      </div>
     </mat-card-content>
 
-    <mat-card-actions (click)="$event.stopPropagation()" class="mt-auto">
+    <mat-card-actions
+      class="device-actions"
+      (click)="$event.stopPropagation()"
+    >
       <button
         mat-stroked-button
-        class="w-full text-[var(--color-accent-cyan)] hover:shadow-[0_0_10px_var(--color-accent-cyan)55] transition-all duration-200 flex items-center justify-center gap-2"
+        class="device-button"
         (click)="cartService.addItemToCart(device)"
       >
         <mat-icon>add_shopping_cart</mat-icon>
